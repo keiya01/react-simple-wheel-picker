@@ -23,8 +23,8 @@
   },
   "homepage": "https://github.com/keiya01/react-wheel-datepicker#readme",
   "scripts": {
-    "build": "webpack",
-    "watch": "webpack -w",
+    "build": "tsc",
+    "test": "jest",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -43,32 +43,35 @@
   },
   "devDependencies": {
     "@babel/core": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "@babel/preset-react": "^7.7.4",
+    "@babel/preset-typescript": "^7.7.4",
     "@storybook/addon-actions": "^5.2.6",
     "@storybook/addon-links": "^5.2.6",
     "@storybook/addons": "^5.2.6",
     "@storybook/react": "^5.2.6",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
     "@types/jest": "^24.0.23",
     "@types/react": "^16.9.13",
     "@types/react-dom": "^16.9.4",
     "@typescript-eslint/eslint-plugin": "^2.9.0",
     "@typescript-eslint/parser": "^2.9.0",
+    "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
     "eslint": "^6.7.1",
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "^7.17.0",
     "husky": "^3.1.0",
+    "jest": "^24.9.0",
+    "jest-dom": "^4.0.0",
     "lint-staged": "^9.5.0",
     "prettier": "^1.19.1",
-    "source-map-loader": "^0.2.4",
-    "ts-jest": "^24.2.0",
     "ts-loader": "^6.2.1",
-    "typescript": "^3.7.2",
-    "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10"
+    "typescript": "^3.7.2"
   },
   "dependencies": {
-    "jest": "^24.9.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   }
