@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Component Text 1`] = `
+<h1
+  onClick={[Function]}
+>
+  Sample Title
+</h1>
+`;

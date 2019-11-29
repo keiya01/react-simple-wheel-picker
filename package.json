@@ -48,6 +48,7 @@
     "@babel/preset-typescript": "^7.7.4",
     "@storybook/addon-actions": "^5.2.6",
     "@storybook/addon-links": "^5.2.6",
+    "@storybook/addon-storyshots": "^5.2.6",
     "@storybook/addons": "^5.2.6",
     "@storybook/react": "^5.2.6",
     "@testing-library/jest-dom": "^4.2.4",
@@ -59,6 +60,7 @@
     "@typescript-eslint/parser": "^2.9.0",
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
+    "babel-plugin-require-context-hook": "^1.0.0",
     "eslint": "^6.7.1",
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-prettier": "^3.1.1",
@@ -68,6 +70,7 @@
     "jest-dom": "^4.0.0",
     "lint-staged": "^9.5.0",
     "prettier": "^1.19.1",
+    "react-test-renderer": "^16.12.0",
     "ts-loader": "^6.2.1",
     "typescript": "^3.7.2"
   },
