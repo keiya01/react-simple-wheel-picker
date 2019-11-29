@@ -1,6 +1,6 @@
 {
   "name": "react-wheel-datepicker",
-  "version": "0.0.1",
+  "version": "0.0.1-alpha",
   "main": "dist/index.js",
   "source": "src/index.js",
   "license": "MIT",
