@@ -3,6 +3,24 @@
   "version": "0.0.1",
   "main": "index.js",
   "license": "MIT",
+  "author": {
+    "name": "Keiya Sasaki",
+    "url": "https://keiya01.github.io/portfolio"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keiya01/react-wheel-datepicker.git"
+  },
+  "keywords": [
+    "react",
+    "datepicker",
+    "wheel-datepicker",
+    "date"
+  ],
+  "bugs": {
+    "url": "https://github.com/keiya01/react-wheel-datepicker/issues"
+  },
+  "homepage": "https://github.com/keiya01/react-wheel-datepicker#readme",
   "scripts": {
     "build": "webpack",
     "watch": "webpack -w"
