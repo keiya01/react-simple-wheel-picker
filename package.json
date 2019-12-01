@@ -2,7 +2,7 @@
   "name": "react-wheel-datepicker",
   "version": "0.0.1-alpha",
   "main": "dist/index.js",
-  "source": "src/index.js",
+  "source": "src/index.ts",
   "license": "MIT",
   "author": {
     "name": "Keiya Sasaki",
