@@ -15,182 +15,272 @@ exports[`Storyshots components Wheel Picker 1`] = `
     }
   />
   <li
-    className="sc-bwzfXH dFbzqB"
+    className="sc-bwzfXH eCuMyd"
+    color="#fff"
+    data-itemid="0"
     data-testid="picker-item"
+    fontSize={16}
   >
     0
   </li>
   <li
-    className="sc-bwzfXH dFbzqB"
+    className="sc-bwzfXH geAbYR"
+    color="#fff"
+    data-itemid="1"
     data-testid="picker-item"
+    fontSize={16}
   >
     1
   </li>
   <li
-    className="sc-bwzfXH dFbzqB"
+    className="sc-bwzfXH geAbYR"
+    color="#fff"
+    data-itemid="2"
     data-testid="picker-item"
+    fontSize={16}
   >
     2
   </li>
   <li
-    className="sc-bwzfXH dFbzqB"
+    className="sc-bwzfXH geAbYR"
+    color="#fff"
+    data-itemid="3"
     data-testid="picker-item"
+    fontSize={16}
   >
     3
   </li>
   <li
-    className="sc-bwzfXH dFbzqB"
+    className="sc-bwzfXH geAbYR"
+    color="#fff"
+    data-itemid="4"
     data-testid="picker-item"
+    fontSize={16}
   >
     4
   </li>
   <li
-    className="sc-bwzfXH dFbzqB"
+    className="sc-bwzfXH geAbYR"
+    color="#fff"
+    data-itemid="5"
     data-testid="picker-item"
+    fontSize={16}
   >
     5
   </li>
   <li
-    className="sc-bwzfXH dFbzqB"
+    className="sc-bwzfXH geAbYR"
+    color="#fff"
+    data-itemid="6"
     data-testid="picker-item"
+    fontSize={16}
   >
     6
   </li>
   <li
-    className="sc-bwzfXH dFbzqB"
+    className="sc-bwzfXH geAbYR"
+    color="#fff"
+    data-itemid="7"
     data-testid="picker-item"
+    fontSize={16}
   >
     7
   </li>
   <li
-    className="sc-bwzfXH dFbzqB"
+    className="sc-bwzfXH geAbYR"
+    color="#fff"
+    data-itemid="8"
     data-testid="picker-item"
+    fontSize={16}
   >
     8
   </li>
   <li
-    className="sc-bwzfXH dFbzqB"
+    className="sc-bwzfXH geAbYR"
+    color="#fff"
+    data-itemid="9"
     data-testid="picker-item"
+    fontSize={16}
   >
     9
   </li>
   <li
-    className="sc-bwzfXH dFbzqB"
+    className="sc-bwzfXH geAbYR"
+    color="#fff"
+    data-itemid="10"
     data-testid="picker-item"
+    fontSize={16}
   >
     10
   </li>
   <li
-    className="sc-bwzfXH dFbzqB"
+    className="sc-bwzfXH geAbYR"
+    color="#fff"
+    data-itemid="11"
     data-testid="picker-item"
+    fontSize={16}
   >
     11
   </li>
   <li
-    className="sc-bwzfXH dFbzqB"
+    className="sc-bwzfXH geAbYR"
+    color="#fff"
+    data-itemid="12"
     data-testid="picker-item"
+    fontSize={16}
   >
     12
   </li>
   <li
-    className="sc-bwzfXH dFbzqB"
+    className="sc-bwzfXH geAbYR"
+    color="#fff"
+    data-itemid="13"
     data-testid="picker-item"
+    fontSize={16}
   >
     13
   </li>
   <li
-    className="sc-bwzfXH dFbzqB"
+    className="sc-bwzfXH geAbYR"
+    color="#fff"
+    data-itemid="14"
     data-testid="picker-item"
+    fontSize={16}
   >
     14
   </li>
   <li
-    className="sc-bwzfXH dFbzqB"
+    className="sc-bwzfXH geAbYR"
+    color="#fff"
+    data-itemid="15"
     data-testid="picker-item"
+    fontSize={16}
   >
     15
   </li>
   <li
-    className="sc-bwzfXH dFbzqB"
+    className="sc-bwzfXH geAbYR"
+    color="#fff"
+    data-itemid="16"
     data-testid="picker-item"
+    fontSize={16}
   >
     16
   </li>
   <li
-    className="sc-bwzfXH dFbzqB"
+    className="sc-bwzfXH geAbYR"
+    color="#fff"
+    data-itemid="17"
     data-testid="picker-item"
+    fontSize={16}
   >
     17
   </li>
   <li
-    className="sc-bwzfXH dFbzqB"
+    className="sc-bwzfXH geAbYR"
+    color="#fff"
+    data-itemid="18"
     data-testid="picker-item"
+    fontSize={16}
   >
     18
   </li>
   <li
-    className="sc-bwzfXH dFbzqB"
+    className="sc-bwzfXH geAbYR"
+    color="#fff"
+    data-itemid="19"
     data-testid="picker-item"
+    fontSize={16}
   >
     19
   </li>
   <li
-    className="sc-bwzfXH dFbzqB"
+    className="sc-bwzfXH geAbYR"
+    color="#fff"
+    data-itemid="20"
     data-testid="picker-item"
+    fontSize={16}
   >
     20
   </li>
   <li
-    className="sc-bwzfXH dFbzqB"
+    className="sc-bwzfXH geAbYR"
+    color="#fff"
+    data-itemid="21"
     data-testid="picker-item"
+    fontSize={16}
   >
     21
   </li>
   <li
-    className="sc-bwzfXH dFbzqB"
+    className="sc-bwzfXH geAbYR"
+    color="#fff"
+    data-itemid="22"
     data-testid="picker-item"
+    fontSize={16}
   >
     22
   </li>
   <li
-    className="sc-bwzfXH dFbzqB"
+    className="sc-bwzfXH geAbYR"
+    color="#fff"
+    data-itemid="23"
     data-testid="picker-item"
+    fontSize={16}
   >
     23
   </li>
   <li
-    className="sc-bwzfXH dFbzqB"
+    className="sc-bwzfXH geAbYR"
+    color="#fff"
+    data-itemid="24"
     data-testid="picker-item"
+    fontSize={16}
   >
     24
   </li>
   <li
-    className="sc-bwzfXH dFbzqB"
+    className="sc-bwzfXH geAbYR"
+    color="#fff"
+    data-itemid="25"
     data-testid="picker-item"
+    fontSize={16}
   >
     25
   </li>
   <li
-    className="sc-bwzfXH dFbzqB"
+    className="sc-bwzfXH geAbYR"
+    color="#fff"
+    data-itemid="26"
     data-testid="picker-item"
+    fontSize={16}
   >
     26
   </li>
   <li
-    className="sc-bwzfXH dFbzqB"
+    className="sc-bwzfXH geAbYR"
+    color="#fff"
+    data-itemid="27"
     data-testid="picker-item"
+    fontSize={16}
   >
     27
   </li>
   <li
-    className="sc-bwzfXH dFbzqB"
+    className="sc-bwzfXH geAbYR"
+    color="#fff"
+    data-itemid="28"
     data-testid="picker-item"
+    fontSize={16}
   >
     28
   </li>
   <li
-    className="sc-bwzfXH dFbzqB"
+    className="sc-bwzfXH geAbYR"
+    color="#fff"
+    data-itemid="29"
     data-testid="picker-item"
+    fontSize={16}
   >
     29
   </li>
