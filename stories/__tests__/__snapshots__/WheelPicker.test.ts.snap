@@ -2,157 +2,204 @@
 
 exports[`Storyshots components Wheel Picker 1`] = `
 <ul
-  className="sc-bdVaJa eBqBDA"
+  className="sc-bdVaJa fabxky"
+  data-testid="picker-list"
+  height={100}
+  width={100}
 >
+  <div
+    style={
+      Object {
+        "height": 33,
+      }
+    }
+  />
   <li
+    className="sc-bwzfXH dFbzqB"
     data-testid="picker-item"
   >
     0
   </li>
   <li
+    className="sc-bwzfXH dFbzqB"
     data-testid="picker-item"
   >
     1
   </li>
   <li
+    className="sc-bwzfXH dFbzqB"
     data-testid="picker-item"
   >
     2
   </li>
   <li
+    className="sc-bwzfXH dFbzqB"
     data-testid="picker-item"
   >
     3
   </li>
   <li
+    className="sc-bwzfXH dFbzqB"
     data-testid="picker-item"
   >
     4
   </li>
   <li
+    className="sc-bwzfXH dFbzqB"
     data-testid="picker-item"
   >
     5
   </li>
   <li
+    className="sc-bwzfXH dFbzqB"
     data-testid="picker-item"
   >
     6
   </li>
   <li
+    className="sc-bwzfXH dFbzqB"
     data-testid="picker-item"
   >
     7
   </li>
   <li
+    className="sc-bwzfXH dFbzqB"
     data-testid="picker-item"
   >
     8
   </li>
   <li
+    className="sc-bwzfXH dFbzqB"
     data-testid="picker-item"
   >
     9
   </li>
   <li
+    className="sc-bwzfXH dFbzqB"
     data-testid="picker-item"
   >
     10
   </li>
   <li
+    className="sc-bwzfXH dFbzqB"
     data-testid="picker-item"
   >
     11
   </li>
   <li
+    className="sc-bwzfXH dFbzqB"
     data-testid="picker-item"
   >
     12
   </li>
   <li
+    className="sc-bwzfXH dFbzqB"
     data-testid="picker-item"
   >
     13
   </li>
   <li
+    className="sc-bwzfXH dFbzqB"
     data-testid="picker-item"
   >
     14
   </li>
   <li
+    className="sc-bwzfXH dFbzqB"
     data-testid="picker-item"
   >
     15
   </li>
   <li
+    className="sc-bwzfXH dFbzqB"
     data-testid="picker-item"
   >
     16
   </li>
   <li
+    className="sc-bwzfXH dFbzqB"
     data-testid="picker-item"
   >
     17
   </li>
   <li
+    className="sc-bwzfXH dFbzqB"
     data-testid="picker-item"
   >
     18
   </li>
   <li
+    className="sc-bwzfXH dFbzqB"
     data-testid="picker-item"
   >
     19
   </li>
   <li
+    className="sc-bwzfXH dFbzqB"
     data-testid="picker-item"
   >
     20
   </li>
   <li
+    className="sc-bwzfXH dFbzqB"
     data-testid="picker-item"
   >
     21
   </li>
   <li
+    className="sc-bwzfXH dFbzqB"
     data-testid="picker-item"
   >
     22
   </li>
   <li
+    className="sc-bwzfXH dFbzqB"
     data-testid="picker-item"
   >
     23
   </li>
   <li
+    className="sc-bwzfXH dFbzqB"
     data-testid="picker-item"
   >
     24
   </li>
   <li
+    className="sc-bwzfXH dFbzqB"
     data-testid="picker-item"
   >
     25
   </li>
   <li
+    className="sc-bwzfXH dFbzqB"
     data-testid="picker-item"
   >
     26
   </li>
   <li
+    className="sc-bwzfXH dFbzqB"
     data-testid="picker-item"
   >
     27
   </li>
   <li
+    className="sc-bwzfXH dFbzqB"
     data-testid="picker-item"
   >
     28
   </li>
   <li
+    className="sc-bwzfXH dFbzqB"
     data-testid="picker-item"
   >
     29
   </li>
+  <div
+    style={
+      Object {
+        "height": 33,
+      }
+    }
+  />
 </ul>
 `;
