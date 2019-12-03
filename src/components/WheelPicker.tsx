@@ -22,11 +22,11 @@ const List = styled.ul`
   text-align: center;
   padding: 0 20px;
   ${(props: {
-    height: number;
-    width: number;
-    backgroundColor: string;
-    shadowColor: string;
-  }): string => `
+  height: number;
+  width: number;
+  backgroundColor: string;
+  shadowColor: string;
+}): string => `
     height: ${props.height}px;
     width: ${props.width}px;
     background-color: ${props.backgroundColor};
@@ -161,6 +161,7 @@ const WheelPicker: React.FC<WheelPickerProps> = ({
       <div style={{ height: calculateSpaceHeight(height, styles.limit) }} />
       {data.map(item => (
         <WheelPickerItem
+          key={item.id}
           {...item}
           {...styles}
           height={height}
