@@ -3,14 +3,14 @@ import Component from "../src/components/WheelPicker";
 import { pickerData } from "../src/constants/mockData/pickerData";
 
 export default {
-  title: "components"
+  title: "WheelPicker"
 };
 
 const onChange = (target: Element): void => {
   console.log(target);
 };
 
-export const WheelPicker: React.FC = () => (
+export const normal: React.FC = () => (
   <Component
     data={pickerData}
     onChange={onChange}
