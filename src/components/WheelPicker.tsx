@@ -1,15 +1,8 @@
 import "intersection-observer";
-import React, {
-  useRef,
-  useEffect,
-  useCallback,
-  createRef,
-  RefObject,
-  useMemo,
-  useState
-} from "react";
+import React from "react";
 import styled from "styled-components";
-import WheelPickerItem from "./WheelPickerItem";
+import WheelPickerItem from "@/components/WheelPickerItem";
+import useWheelPicker from "@/hooks/useWheelPicker";
 
 const List = styled.ul`
   position: relative;
@@ -22,11 +15,11 @@ const List = styled.ul`
   text-align: center;
   padding: 0 20px;
   ${(props: {
-  height: number;
-  width: number;
-  backgroundColor: string;
-  shadowColor: string;
-}): string => `
+    height: number;
+    width: number;
+    backgroundColor: string;
+    shadowColor: string;
+  }): string => `
     height: ${props.height}px;
     width: ${props.width}px;
     background-color: ${props.backgroundColor};
@@ -46,6 +39,25 @@ const calculateSpaceHeight = (height: number, limit: number): number => {
   return itemHeight * totalItemSpace;
 };
 
+const setStyles = (styles: {
+  color?: string;
+  activeColor?: string;
+  fontSize?: number;
+  backgroundColor?: string;
+  shadowColor?: string;
+  limit?: number;
+}) => {
+  const _color = styles.color || "#fff";
+  return {
+    color: _color,
+    activeColor: styles.activeColor || _color,
+    fontSize: styles.fontSize || 16,
+    backgroundColor: styles.backgroundColor || "#555",
+    shadowColor: styles.shadowColor || "#333",
+    limit: styles.limit || 5
+  };
+};
+
 export interface PickerData {
   id: string;
   value: string | number;
@@ -59,7 +71,7 @@ export interface WheelPickerProps {
   color?: string;
   activeColor?: string;
   fontSize?: number;
-  backgroudColor?: string;
+  backgroundColor?: string;
   shadowColor?: string;
   limit?: number;
 }
@@ -72,82 +84,19 @@ const WheelPicker: React.FC<WheelPickerProps> = ({
   color,
   activeColor,
   fontSize,
-  backgroudColor,
+  backgroundColor,
   shadowColor,
   limit
 }) => {
-  const [activeID, setActiveID] = useState("0");
-  const root = useRef<HTMLUListElement | null>(null);
-  const refs = useMemo(
-    () =>
-      data.reduce((result, value) => {
-        result[value.id] = createRef<HTMLLIElement>();
-        return result;
-      }, {} as { [key: string]: RefObject<HTMLLIElement> }),
-    [data]
-  );
-  const observer = useRef<IntersectionObserver | null>(null);
-  const styles = useMemo(() => {
-    const _color = color || "#fff";
-    return {
-      color: _color,
-      activeColor: activeColor || _color,
-      fontSize: fontSize || 16,
-      backgroundColor: backgroudColor || "#555",
-      shadowColor: shadowColor || "#333",
-      limit: limit || 5
-    };
-  }, [activeColor, backgroudColor, color, fontSize, limit, shadowColor]);
-
-  const timer = useRef<number | null>(null);
-  const handleOnScroll: IntersectionObserverCallback = useCallback(
-    (entries: IntersectionObserverEntry[]): void => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          if (timer.current) {
-            clearTimeout(timer.current);
-          }
-
-          const itemID = entry.target.getAttribute("data-itemid");
-          const firstElm = refs[0].current;
-          const currentElm = refs[itemID || 0].current;
-          const _root = root.current;
-          if (_root && firstElm && currentElm) {
-            timer.current = setTimeout(() => {
-              const basicOffsetTop = firstElm.offsetTop;
-              const currentOffsetTop = currentElm.offsetTop - basicOffsetTop;
-              const targetTop =
-                (basicOffsetTop * currentOffsetTop) / basicOffsetTop;
-              _root.scrollTo(0, targetTop);
-            }, 500);
-          }
-
-          if (itemID) {
-            setActiveID(itemID);
-          }
-          onChange(entry.target);
-        }
-      });
-    },
-    [onChange, refs]
-  );
-
-  useEffect(() => {
-    if (!observer.current && root.current) {
-      const option: IntersectionObserverInit = {
-        root: root.current,
-        rootMargin: "-50% 0px",
-        threshold: 0
-      };
-      observer.current = new IntersectionObserver(handleOnScroll, option);
-      data.map(item => {
-        const elm = refs[item.id].current;
-        if (elm && observer.current) {
-          observer.current.observe(elm);
-        }
-      });
-    }
-  }, [data, data.length, handleOnScroll, refs, root]);
+  const { root, refs, activeID } = useWheelPicker(data, onChange);
+  const styles = setStyles({
+    color,
+    activeColor,
+    fontSize,
+    backgroundColor,
+    shadowColor,
+    limit
+  });
 
   return (
     <List
