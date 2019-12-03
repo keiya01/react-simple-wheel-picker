@@ -11,5 +11,11 @@ const onChange = (target: Element): void => {
 };
 
 export const WheelPicker: React.FC = () => (
-  <Component data={pickerData} onChange={onChange} width={100} height={100} />
+  <Component
+    data={pickerData}
+    onChange={onChange}
+    height={500}
+    width={100}
+    limit={11}
+  />
 );

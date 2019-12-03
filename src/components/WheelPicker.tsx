@@ -17,7 +17,9 @@ const List = styled.ul`
   display: inline-block;
   list-style: none;
   overflow-y: scroll;
+  overflow-x: hidden;
   text-align: center;
+  padding: 0 20px;
   ${(props: {
     height: number;
     width: number;
@@ -32,18 +34,22 @@ const List = styled.ul`
 `;
 
 const Item = styled.li`
-  padding: 5px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: transform ease 100ms;
+  font-size: 16px;
   ${(props: {
     isActive: boolean;
-    fontSize: number;
+    height: number;
     color: string;
+    limit: number;
     activeColor: string;
   }): string => `
-    ${props.isActive && `transform: scale(1.2);`}
-    font-size: ${props.fontSize}px;
+    height: ${props.height / props.limit}px;
     color: ${props.isActive ? props.activeColor : props.color};
     font-weight: ${props.isActive ? "bold" : "linear"};
+    ${props.isActive && `transform: scale(1.2);`}
   `}
 `;
 
@@ -57,23 +63,35 @@ export interface WheelPickerProps {
   onChange: (target: Element) => void;
   height: number;
   width: number;
-  fontSize?: number;
   color?: string;
   activeColor?: string;
   backgroudColor?: string;
   shadowColor?: string;
+  limit?: number;
 }
+
+const calculateSpaceHeight = (height: number, limit: number): number => {
+  const itemHeight = height / limit;
+  if (limit % 2 === 0) {
+    const itemHeightCenter = itemHeight / 2;
+    const totalItemSpace = limit / 2 - 1;
+    const nextHeight = itemHeight * totalItemSpace;
+    return nextHeight + itemHeightCenter;
+  }
+  const totalItemSpace = Math.floor(limit / 2);
+  return itemHeight * totalItemSpace;
+};
 
 const WheelPicker: React.FC<WheelPickerProps> = ({
   data,
   onChange,
   height,
   width,
-  fontSize,
   color,
   activeColor,
   backgroudColor,
-  shadowColor
+  shadowColor,
+  limit
 }) => {
   const [activeID, setActiveID] = useState("0");
   const root = useRef<HTMLUListElement | null>(null);
@@ -91,17 +109,35 @@ const WheelPicker: React.FC<WheelPickerProps> = ({
     return {
       color: _color,
       activeColor: activeColor || _color,
-      fontSize: fontSize || 16,
       backgroundColor: backgroudColor || "#555",
-      shadowColor: shadowColor || "#333"
+      shadowColor: shadowColor || "#333",
+      limit: limit || 5
     };
-  }, [activeColor, backgroudColor, color, fontSize, shadowColor]);
+  }, [activeColor, backgroudColor, color, limit, shadowColor]);
 
+  const timer = useRef<number | null>(null);
   const handleOnScroll: IntersectionObserverCallback = useCallback(
     (entries: IntersectionObserverEntry[]): void => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
+          if (timer.current) {
+            clearTimeout(timer.current);
+          }
+
           const itemID = entry.target.getAttribute("data-itemid");
+          const firstElm = refs[0].current;
+          const currentElm = refs[itemID || 0].current;
+          const _root = root.current;
+          if (_root && firstElm && currentElm) {
+            timer.current = setTimeout(() => {
+              const basicOffsetTop = firstElm.offsetTop;
+              const currentOffsetTop = currentElm.offsetTop - basicOffsetTop;
+              const targetTop =
+                (basicOffsetTop * currentOffsetTop) / basicOffsetTop;
+              _root.scrollTo(0, targetTop);
+            }, 500);
+          }
+
           if (itemID) {
             setActiveID(itemID);
           }
@@ -109,7 +145,7 @@ const WheelPicker: React.FC<WheelPickerProps> = ({
         }
       });
     },
-    [onChange]
+    [onChange, refs]
   );
 
   useEffect(() => {
@@ -133,27 +169,28 @@ const WheelPicker: React.FC<WheelPickerProps> = ({
     <List
       ref={root}
       data-testid="picker-list"
-      width={width}
       height={height}
+      width={width}
       backgroundColor={styles.backgroundColor}
       shadowColor={styles.shadowColor}
     >
-      <div style={{ height: Math.floor(height / 3) }} />
+      <div style={{ height: calculateSpaceHeight(height, styles.limit) }} />
       {data.map(item => (
         <Item
           key={item.id}
           ref={refs[item.id]}
           data-itemid={item.id}
           data-testid="picker-item"
+          height={height}
           isActive={item.id === activeID}
           color={styles.color}
           activeColor={styles.activeColor}
-          fontSize={styles.fontSize}
+          limit={styles.limit}
         >
           {item.value}
         </Item>
       ))}
-      <div style={{ height: Math.floor(height / 3) }} />
+      <div style={{ height: calculateSpaceHeight(height, styles.limit) }} />
     </List>
   );
 };
