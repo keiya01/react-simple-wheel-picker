@@ -9,6 +9,7 @@ import React, {
   useState
 } from "react";
 import styled from "styled-components";
+import WheelPickerItem from "./WheelPickerItem";
 
 const List = styled.ul`
   position: relative;
@@ -33,25 +34,17 @@ const List = styled.ul`
   `}
 `;
 
-const Item = styled.li`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform ease 100ms;
-  font-size: 16px;
-  ${(props: {
-    isActive: boolean;
-    height: number;
-    color: string;
-    limit: number;
-    activeColor: string;
-  }): string => `
-    height: ${props.height / props.limit}px;
-    color: ${props.isActive ? props.activeColor : props.color};
-    font-weight: ${props.isActive ? "bold" : "linear"};
-    ${props.isActive && `transform: scale(1.2);`}
-  `}
-`;
+const calculateSpaceHeight = (height: number, limit: number): number => {
+  const itemHeight = height / limit;
+  if (limit % 2 === 0) {
+    const itemHeightCenter = itemHeight / 2;
+    const totalItemSpace = limit / 2 - 1;
+    const nextHeight = itemHeight * totalItemSpace;
+    return nextHeight + itemHeightCenter;
+  }
+  const totalItemSpace = Math.floor(limit / 2);
+  return itemHeight * totalItemSpace;
+};
 
 export interface PickerData {
   id: string;
@@ -65,22 +58,11 @@ export interface WheelPickerProps {
   width: number;
   color?: string;
   activeColor?: string;
+  fontSize?: number;
   backgroudColor?: string;
   shadowColor?: string;
   limit?: number;
 }
-
-const calculateSpaceHeight = (height: number, limit: number): number => {
-  const itemHeight = height / limit;
-  if (limit % 2 === 0) {
-    const itemHeightCenter = itemHeight / 2;
-    const totalItemSpace = limit / 2 - 1;
-    const nextHeight = itemHeight * totalItemSpace;
-    return nextHeight + itemHeightCenter;
-  }
-  const totalItemSpace = Math.floor(limit / 2);
-  return itemHeight * totalItemSpace;
-};
 
 const WheelPicker: React.FC<WheelPickerProps> = ({
   data,
@@ -89,6 +71,7 @@ const WheelPicker: React.FC<WheelPickerProps> = ({
   width,
   color,
   activeColor,
+  fontSize,
   backgroudColor,
   shadowColor,
   limit
@@ -109,11 +92,12 @@ const WheelPicker: React.FC<WheelPickerProps> = ({
     return {
       color: _color,
       activeColor: activeColor || _color,
+      fontSize: fontSize || 16,
       backgroundColor: backgroudColor || "#555",
       shadowColor: shadowColor || "#333",
       limit: limit || 5
     };
-  }, [activeColor, backgroudColor, color, limit, shadowColor]);
+  }, [activeColor, backgroudColor, color, fontSize, limit, shadowColor]);
 
   const timer = useRef<number | null>(null);
   const handleOnScroll: IntersectionObserverCallback = useCallback(
@@ -176,19 +160,13 @@ const WheelPicker: React.FC<WheelPickerProps> = ({
     >
       <div style={{ height: calculateSpaceHeight(height, styles.limit) }} />
       {data.map(item => (
-        <Item
-          key={item.id}
-          ref={refs[item.id]}
-          data-itemid={item.id}
-          data-testid="picker-item"
+        <WheelPickerItem
+          {...item}
+          {...styles}
           height={height}
-          isActive={item.id === activeID}
-          color={styles.color}
-          activeColor={styles.activeColor}
-          limit={styles.limit}
-        >
-          {item.value}
-        </Item>
+          activeID={activeID}
+          forwardRef={refs[item.id]}
+        />
       ))}
       <div style={{ height: calculateSpaceHeight(height, styles.limit) }} />
     </List>
