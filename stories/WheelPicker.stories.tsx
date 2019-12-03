@@ -14,8 +14,8 @@ export const WheelPicker: React.FC = () => (
   <Component
     data={pickerData}
     onChange={onChange}
-    height={500}
-    width={100}
-    limit={11}
+    height={150}
+    width={50}
+    limit={5}
   />
 );
