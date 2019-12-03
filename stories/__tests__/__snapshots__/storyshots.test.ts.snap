@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots components Wheel Picker 1`] = `
+exports[`Storyshots WheelPicker Normal 1`] = `
 <ul
   className="sc-bwzfXH jOEnWm"
   data-testid="picker-list"
@@ -322,4 +322,30 @@ exports[`Storyshots components Wheel Picker 1`] = `
     }
   />
 </ul>
+`;
+
+exports[`Storyshots WheelPickerItem Active 1`] = `
+<li
+  className="sc-bdVaJa fKwsUl"
+  color="black"
+  data-itemid="0"
+  data-testid="picker-item"
+  fontSize={16}
+  height={150}
+>
+  0
+</li>
+`;
+
+exports[`Storyshots WheelPickerItem Normal 1`] = `
+<li
+  className="sc-bdVaJa lfWjii"
+  color="black"
+  data-itemid="0"
+  data-testid="picker-item"
+  fontSize={16}
+  height={150}
+>
+  0
+</li>
 `;
