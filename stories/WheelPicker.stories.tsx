@@ -15,7 +15,7 @@ export const normal: React.FC = () => (
     data={pickerData}
     onChange={onChange}
     height={150}
-    width={50}
+    width={100}
     limit={5}
   />
 );
