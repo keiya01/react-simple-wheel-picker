@@ -16,12 +16,12 @@ const List = styled.ul`
   padding: 0 20px;
   ${(props: {
     height: number;
-    width: number;
+    width: string;
     backgroundColor: string;
     shadowColor: string;
   }): string => `
     height: ${props.height}px;
-    width: ${props.width}px;
+    width: ${props.width};
     background-color: ${props.backgroundColor};
     box-shadow: 1px 3px 10px ${props.shadowColor} inset;
   `}
@@ -46,6 +46,7 @@ const setStyles = (styles: {
   backgroundColor?: string;
   shadowColor?: string;
   limit?: number;
+  width?: number;
 }) => {
   const _color = styles.color || "#fff";
   return {
@@ -54,7 +55,8 @@ const setStyles = (styles: {
     fontSize: styles.fontSize || 16,
     backgroundColor: styles.backgroundColor || "#555",
     shadowColor: styles.shadowColor || "#333",
-    limit: styles.limit || 5
+    limit: styles.limit || 5,
+    width: styles.width ? `${styles.width}px` : "100%"
   };
 };
 
@@ -67,7 +69,7 @@ export interface WheelPickerProps {
   data: PickerData[];
   onChange: (target: Element) => void;
   height: number;
-  width: number;
+  width?: number;
   color?: string;
   activeColor?: string;
   fontSize?: number;
@@ -95,7 +97,8 @@ const WheelPicker: React.FC<WheelPickerProps> = ({
     fontSize,
     backgroundColor,
     shadowColor,
-    limit
+    limit,
+    width
   });
 
   return (
@@ -103,7 +106,7 @@ const WheelPicker: React.FC<WheelPickerProps> = ({
       ref={root}
       data-testid="picker-list"
       height={height}
-      width={width}
+      width={styles.width}
       backgroundColor={styles.backgroundColor}
       shadowColor={styles.shadowColor}
     >
