@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, createRef } from "react";
 
 import { PickerData } from "@/components/WheelPicker";
 import { PickerItemRef } from "@/types/pickerItemRef";
-import useScrollAction from "./useScrollAction";
+import useScrollAction from "@/hooks/useObserver";
 
 const setRefs = (data: PickerData[]) => {
   return () =>
@@ -19,11 +19,11 @@ const useWheelPicker = (
   const root = useRef<HTMLUListElement | null>(null);
   const refs = useMemo(setRefs(data), [data]);
   const observer = useRef<IntersectionObserver | null>(null);
-  const { activeID, onScroll } = useScrollAction(root, refs, onChange);
+  const { activeID, observerCallback } = useScrollAction(root, refs, onChange);
 
   useEffect(() => {
     if (!observer.current && root.current) {
-      observer.current = new IntersectionObserver(onScroll, {
+      observer.current = new IntersectionObserver(observerCallback, {
         root: root.current,
         rootMargin: "-50% 0px",
         threshold: 0
@@ -35,7 +35,7 @@ const useWheelPicker = (
         }
       });
     }
-  }, [data, onScroll, refs, root]);
+  }, [data, observerCallback, refs, root]);
 
   return {
     root,

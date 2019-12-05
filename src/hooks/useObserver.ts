@@ -1,14 +1,14 @@
 import { RefObject, useState, useRef, useCallback } from "react";
 import { PickerItemRef } from "@/types/pickerItemRef";
 
-const useScrollAction = (
+const useObserver = (
   root: RefObject<HTMLUListElement>,
   refs: PickerItemRef,
   onChange: (target: Element) => void
 ) => {
   const [activeID, setActiveID] = useState("0");
   const timer = useRef<number | null>(null);
-  const onScroll: IntersectionObserverCallback = useCallback(
+  const observerCallback: IntersectionObserverCallback = useCallback(
     (entries: IntersectionObserverEntry[]): void => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) {
@@ -44,8 +44,8 @@ const useScrollAction = (
 
   return {
     activeID,
-    onScroll
+    observerCallback
   };
 };
 
-export default useScrollAction;
+export default useObserver;
