@@ -10,12 +10,11 @@ export const normal: React.FC = () => (
     id="0"
     activeID="1"
     value="0"
+    height={30}
     color="black"
     activeColor="black"
     fontSize={16}
-    limit={5}
     forwardRef={React.createRef()}
-    height={150}
   />
 );
 
@@ -24,11 +23,10 @@ export const active: React.FC = () => (
     id="0"
     activeID="0"
     value="0"
+    height={30}
     color="black"
     activeColor="black"
     fontSize={16}
-    limit={5}
     forwardRef={React.createRef()}
-    height={150}
   />
 );
