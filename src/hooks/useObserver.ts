@@ -1,13 +1,34 @@
-import { RefObject, useState, useRef, useCallback } from "react";
-import { PickerItemRef } from "@/types/pickerItemRef";
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  createRef,
+  useState,
+  useCallback
+} from "react";
 
-const useObserver = (
-  root: RefObject<HTMLUListElement>,
-  refs: PickerItemRef,
+import { PickerData } from "@/components/WheelPicker";
+import { PickerItemRef } from "@/types/pickerItemRef";
+import useScrollAnimation from "@/hooks/useScrollAnimation";
+
+const setRefs = (data: PickerData[]) => {
+  return () =>
+    data.reduce((result, value) => {
+      result[value.id] = createRef<HTMLLIElement>();
+      return result;
+    }, {} as PickerItemRef);
+};
+
+const useObsever = (
+  data: PickerData[],
   onChange: (target: Element) => void
 ) => {
-  const [activeID, setActiveID] = useState("0");
-  const timer = useRef<number | null>(null);
+  const root = useRef<HTMLUListElement | null>(null);
+  const refs = useMemo(setRefs(data), [data]);
+  const observer = useRef<IntersectionObserver | null>(null);
+  const [activeID, setActiveID] = useState(data[0].id);
+  const { onScroll } = useScrollAnimation(root, refs);
+
   const observerCallback: IntersectionObserverCallback = useCallback(
     (entries: IntersectionObserverEntry[]): void => {
       entries.forEach(entry => {
@@ -15,37 +36,40 @@ const useObserver = (
           return;
         }
 
-        if (timer.current) {
-          clearTimeout(timer.current);
-        }
-
         const itemID = entry.target.getAttribute("data-itemid");
-        const firstElm = refs[0].current;
-        const currentElm = refs[itemID || 0].current;
-        const _root = root.current;
-        if (_root && firstElm && currentElm) {
-          timer.current = setTimeout(() => {
-            const basicOffsetTop = firstElm.offsetTop;
-            const currentOffsetTop = currentElm.offsetTop - basicOffsetTop;
-            const targetTop =
-              (basicOffsetTop * currentOffsetTop) / basicOffsetTop;
-            _root.scrollTo(0, targetTop);
-          }, 500);
+        if (!itemID) {
+          return;
         }
 
-        if (itemID) {
-          setActiveID(itemID);
-        }
+        onScroll(data, itemID);
+        setActiveID(itemID);
         onChange(entry.target);
       });
     },
-    [onChange, refs, root]
+    [onScroll, data, onChange]
   );
 
+  useEffect(() => {
+    if (!observer.current && root.current) {
+      observer.current = new IntersectionObserver(observerCallback, {
+        root: root.current,
+        rootMargin: "-50% 0px",
+        threshold: 0
+      });
+      data.map(item => {
+        const elm = refs[item.id].current;
+        if (elm && observer.current) {
+          observer.current.observe(elm);
+        }
+      });
+    }
+  }, [data, observerCallback, refs, root]);
+
   return {
-    activeID,
-    observerCallback
+    root,
+    refs,
+    activeID
   };
 };
 
-export default useObserver;
+export default useObsever;
