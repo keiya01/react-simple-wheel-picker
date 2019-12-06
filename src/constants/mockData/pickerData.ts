@@ -24,5 +24,33 @@ export const pickerData: PickerData[] = [
   {
     id: "5",
     value: "ReactNative"
+  },
+  {
+    id: "6",
+    value: "Flow"
+  },
+  {
+    id: "7",
+    value: "jQuery"
+  },
+  {
+    id: "8",
+    value: "Next"
+  },
+  {
+    id: "9",
+    value: "Nuxt"
+  },
+  {
+    id: "10",
+    value: "Node"
+  },
+  {
+    id: "11",
+    value: "Deno"
+  },
+  {
+    id: "12",
+    value: "Nest"
   }
 ];
