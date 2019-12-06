@@ -19,6 +19,8 @@ export const normal: React.FC = () => {
       height={200}
       itemHeight={40}
       width={100}
+      color="#bbb"
+      activeColor="#fff"
     />
   );
 };
