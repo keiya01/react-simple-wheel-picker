@@ -1,11 +1,4 @@
-import {
-  useEffect,
-  useMemo,
-  useRef,
-  createRef,
-  useState,
-  useCallback
-} from "react";
+import { useEffect, useMemo, useRef, createRef, useState } from "react";
 
 import { PickerData } from "@/components/WheelPicker";
 import { PickerItemRef } from "@/types/pickerItemRef";
@@ -21,17 +14,20 @@ const setRefs = (data: PickerData[]) => {
 
 const useObsever = (
   data: PickerData[],
+  selectedID: string,
   itemHeight: number,
   onChange: (target: Element) => void
 ) => {
   const root = useRef<HTMLUListElement | null>(null);
   const refs = useMemo(setRefs(data), [data]);
   const observer = useRef<IntersectionObserver | null>(null);
-  const [activeID, setActiveID] = useState(data[0].id);
+  const [activeID, setActiveID] = useState(selectedID);
   const { onScroll } = useScrollAnimation(root, refs);
 
-  const observerCallback: IntersectionObserverCallback = useCallback(
-    (entries: IntersectionObserverEntry[]): void => {
+  useEffect(() => {
+    const observerCallback: IntersectionObserverCallback = (
+      entries: IntersectionObserverEntry[]
+    ): void => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) {
           return;
@@ -46,11 +42,8 @@ const useObsever = (
         setActiveID(itemID);
         onChange(entry.target);
       });
-    },
-    [onScroll, data, onChange]
-  );
+    };
 
-  useEffect(() => {
     if (!observer.current && root.current) {
       const margin =
         (100 - (itemHeight / root.current.clientHeight) * 100) / 2 + 1;
@@ -65,8 +58,14 @@ const useObsever = (
           observer.current.observe(elm);
         }
       });
+
+      const firstItem = refs[data[0].id].current;
+      const item = refs[selectedID].current;
+      if (firstItem && item) {
+        root.current.scrollTo(0, item.offsetTop - firstItem.offsetTop);
+      }
     }
-  }, [data, itemHeight, observerCallback, refs, root]);
+  }, [data, refs, root]); // eslint-disable-line
 
   return {
     root,

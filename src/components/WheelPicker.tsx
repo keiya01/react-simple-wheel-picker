@@ -58,6 +58,7 @@ export interface PickerData {
 
 export interface WheelPickerProps {
   data: PickerData[];
+  selectedID: string;
   onChange: (target: Element) => void;
   height: number;
   itemHeight: number;
@@ -71,6 +72,7 @@ export interface WheelPickerProps {
 
 const WheelPicker: React.FC<WheelPickerProps> = ({
   data,
+  selectedID,
   onChange,
   height,
   itemHeight,
@@ -81,7 +83,12 @@ const WheelPicker: React.FC<WheelPickerProps> = ({
   backgroundColor,
   shadowColor
 }) => {
-  const { root, refs, activeID } = useObsever(data, itemHeight, onChange);
+  const { root, refs, activeID } = useObsever(
+    data,
+    selectedID,
+    itemHeight,
+    onChange
+  );
   const styles = setStyles({
     width,
     color,
