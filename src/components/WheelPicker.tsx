@@ -81,7 +81,7 @@ const WheelPicker: React.FC<WheelPickerProps> = ({
   backgroundColor,
   shadowColor
 }) => {
-  const { root, refs, activeID } = useObsever(data, onChange);
+  const { root, refs, activeID } = useObsever(data, itemHeight, onChange);
   const styles = setStyles({
     width,
     color,

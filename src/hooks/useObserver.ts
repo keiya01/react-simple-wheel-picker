@@ -21,6 +21,7 @@ const setRefs = (data: PickerData[]) => {
 
 const useObsever = (
   data: PickerData[],
+  itemHeight: number,
   onChange: (target: Element) => void
 ) => {
   const root = useRef<HTMLUListElement | null>(null);
@@ -51,9 +52,11 @@ const useObsever = (
 
   useEffect(() => {
     if (!observer.current && root.current) {
+      const margin =
+        (100 - (itemHeight / root.current.clientHeight) * 100) / 2 + 1;
       observer.current = new IntersectionObserver(observerCallback, {
         root: root.current,
-        rootMargin: "-50% 0px",
+        rootMargin: `-${margin}% 0px`,
         threshold: 0
       });
       data.map(item => {
@@ -63,7 +66,7 @@ const useObsever = (
         }
       });
     }
-  }, [data, observerCallback, refs, root]);
+  }, [data, itemHeight, observerCallback, refs, root]);
 
   return {
     root,
