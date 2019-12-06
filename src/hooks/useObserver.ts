@@ -50,7 +50,7 @@ const useObsever = (
       observer.current = new IntersectionObserver(observerCallback, {
         root: root.current,
         rootMargin: `-${margin}% 0px`,
-        threshold: 0
+        threshold: [0.3, 0.8]
       });
       data.map(item => {
         const elm = refs[item.id].current;
