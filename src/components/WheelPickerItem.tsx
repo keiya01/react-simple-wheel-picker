@@ -16,8 +16,7 @@ const Item = styled.li`
     height: ${props.height}px;
     color: ${props.isActive ? props.activeColor : props.color};
     font-size: ${props.fontSize}px;
-    font-weight: ${props.isActive ? "bold" : "linear"};
-    ${props.isActive && `transform: scale(1.05);`}
+    ${props.isActive && `transform: scale(1.1);`}
   `}
 `;
 
