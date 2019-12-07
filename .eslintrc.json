@@ -9,6 +9,7 @@
   ],
   "plugins": [
     "react",
+    "react-hooks",
     "prettier",
     "@typescript-eslint"
   ],
@@ -34,7 +35,7 @@
     "@typescript-eslint/camelcase": "error",
     "@typescript-eslint/class-name-casing": "error",
     "@typescript-eslint/consistent-type-assertions": "error",
-    "@typescript-eslint/explicit-function-return-type": "warn",
+    "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/interface-name-prefix": "error",
     "@typescript-eslint/member-delimiter-style": "error",
     "no-array-constructor": "off",
@@ -58,6 +59,8 @@
     "no-var": "error",
     "prefer-const": "error",
     "prefer-rest-params": "error",
-    "prefer-spread": "error"
+    "prefer-spread": "error",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   }
 }
