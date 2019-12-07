@@ -12,6 +12,21 @@ const setRefs = (data: PickerData[]) => {
     }, {} as PickerItemRef);
 };
 
+const calculatePercentageOfRootWithoutItem = (
+  rootHeight: number,
+  itemHeight: number
+) => {
+  return 100 - (itemHeight / rootHeight) * 100;
+};
+
+const calculateMarginVertical = (rootHeight: number, itemHeight: number) => {
+  return calculatePercentageOfRootWithoutItem(rootHeight, itemHeight) / 2;
+};
+
+const calculateRootMargin = (rootHeight: number, itemHeight: number) => {
+  return `-${calculateMarginVertical(rootHeight, itemHeight)}% 0px`;
+};
+
 const useObsever = (
   data: PickerData[],
   selectedID: string,
@@ -45,12 +60,10 @@ const useObsever = (
     };
 
     if (!observer.current && root.current) {
-      const margin =
-        (100 - (itemHeight / root.current.clientHeight) * 100) / 2 + 1;
       observer.current = new IntersectionObserver(observerCallback, {
         root: root.current,
-        rootMargin: `-${margin}% 0px`,
-        threshold: [0.3, 0.8]
+        rootMargin: calculateRootMargin(root.current.clientHeight, itemHeight),
+        threshold: [0.3, 0.79]
       });
       data.map(item => {
         const elm = refs[item.id].current;
