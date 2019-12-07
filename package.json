@@ -1,8 +1,10 @@
 {
-	"name": "react-wheel-datepicker",
+	"name": "react-wheel-picker",
 	"version": "0.0.1-alpha",
 	"main": "dist/index.js",
-	"source": "src/index.ts",
+	"files": [
+    "dist"
+  ],
 	"license": "MIT",
 	"author": {
 		"name": "Keiya Sasaki",
@@ -19,6 +21,7 @@
 	"homepage": "https://github.com/keiya01/react-wheel-datepicker#readme",
 	"scripts": {
 		"build": "tsc",
+		"prepublishOnly": "yarn build",
 		"test": "jest",
 		"storybook": "start-storybook -p 6006",
 		"build-storybook": "build-storybook"
