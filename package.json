@@ -1,6 +1,6 @@
 {
-	"name": "react-wheel-picker",
-	"version": "0.0.1-alpha",
+	"name": "react-simple-wheel-picker",
+	"version": "0.0.1",
 	"main": "dist/index.js",
 	"files": [
     "dist"
