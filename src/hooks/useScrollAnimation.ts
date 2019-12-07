@@ -1,6 +1,6 @@
 import { RefObject, useRef } from "react";
-import { PickerItemRef } from "@/types/pickerItemRef";
-import { PickerData } from "@/components/WheelPicker";
+import { PickerItemRef } from "../types/pickerItemRef";
+import { PickerData } from "../components/WheelPicker";
 
 const easeOutCubic = (t: number, b: number, c: number, d: number) => {
   t /= d;

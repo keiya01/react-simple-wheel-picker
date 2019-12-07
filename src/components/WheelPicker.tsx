@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import WheelPickerItem from "@/components/WheelPickerItem";
-import useObsever from "@/hooks/useObserver";
+import WheelPickerItem from "../components/WheelPickerItem";
+import useObsever from "../hooks/useObserver";
 
 const List = styled.ul`
   position: relative;
