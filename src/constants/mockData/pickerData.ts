@@ -1,4 +1,4 @@
-import { PickerData } from "@/components/WheelPicker";
+import { PickerData } from "../../components/WheelPicker";
 
 export const pickerData: PickerData[] = [
   {
