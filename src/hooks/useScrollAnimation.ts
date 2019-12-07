@@ -62,7 +62,7 @@ const useScrollAnimation = (
     }
   };
 
-  return { onScroll };
+  return onScroll;
 };
 
 export default useScrollAnimation;

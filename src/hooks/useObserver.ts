@@ -37,7 +37,7 @@ const useObsever = (
   const refs = useMemo(setRefs(data), [data]);
   const observer = useRef<IntersectionObserver | null>(null);
   const [activeID, setActiveID] = useState(selectedID);
-  const { onScroll } = useScrollAnimation(root, refs);
+  const onScroll = useScrollAnimation(root, refs);
 
   useEffect(() => {
     const observerCallback: IntersectionObserverCallback = (
