@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>react-wheel-picker</h1>
+  <h1>react-simple-wheel-picker</h1>
 </div>
 
 # How To Use
