@@ -1,12 +1,12 @@
 <div align="center">
-  <h1>react-wheel-picker</h1>
+  <h1>react-simple-wheel-picker</h1>
 </div>
 
-# How To Use
-- `npm run react-wheel-picker` or `yarn add react-wheel-picker`
+# Usage
+- `npm run react-simple-wheel-picker` or `yarn add react-simple-wheel-picker`
 
 ```js
-import WheelPicker from "react-wheel-picker";
+import WheelPicker from "react-simple-wheel-picker";
 
 const data = [
   {
@@ -40,6 +40,7 @@ const Sample = () => {
       data={data}
       onChange={handleOnChange}
       height={150}
+      width={100}
       itemHeight={30}
       selectedID={data[0].id}
       color="#ccc"

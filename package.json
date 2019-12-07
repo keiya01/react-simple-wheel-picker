@@ -1,5 +1,5 @@
 {
-	"name": "react-wheel-picker",
+	"name": "react-simple-wheel-picker",
 	"version": "0.0.2",
 	"main": "dist/index.js",
 	"types": "src/index.d.ts",
