@@ -1,8 +1,7 @@
 {
 	"name": "react-simple-wheel-picker",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"main": "dist/index.js",
-	"types": "src/index.d.ts",
 	"files": [
     "dist"
   ],
@@ -15,7 +14,7 @@
 		"type": "git",
 		"url": "git+https://github.com/keiya01/react-wheel-datepicker.git"
 	},
-	"keywords": [ "react", "datepicker", "wheel-datepicker", "date" ],
+	"keywords": [ "react", "select", "wheel-picker", "picker" ],
 	"bugs": {
 		"url": "https://github.com/keiya01/react-wheel-datepicker/issues"
 	},
