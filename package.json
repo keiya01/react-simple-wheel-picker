@@ -1,7 +1,8 @@
 {
 	"name": "react-wheel-picker",
-	"version": "0.0.1-alpha",
+	"version": "0.0.2",
 	"main": "dist/index.js",
+	"types": "src/index.d.ts",
 	"files": [
     "dist"
   ],
@@ -34,6 +35,9 @@
 	"lint-staged": {
 		"src/**/*.{ts, tsx}": [ "jest --bail --findRelatedTests", "eslint --fix", "git add" ]
 	},
+	"resolutions": {
+    "@types/react": "^16.9.13"
+  },
 	"devDependencies": {
 		"@babel/core": "^7.7.4",
 		"@babel/preset-env": "^7.7.4",
