@@ -2,6 +2,8 @@
   <h1>react-simple-wheel-picker</h1>
 </div>
 
+![demo](https://raw.githubusercontent.com/keiya01/react-simple-wheel-picker/master/wheel_picker.gif)
+
 # Usage
 
 - `npm run react-simple-wheel-picker` or `yarn add react-simple-wheel-picker`
