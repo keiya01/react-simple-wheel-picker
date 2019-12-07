@@ -1,0 +1,335 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots WheelPicker Normal 1`] = `
+<ul
+  className="sc-bwzfXH jCGouY"
+  data-testid="picker-list"
+  height={200}
+  width="100px"
+>
+  <div
+    style={
+      Object {
+        "height": 80,
+      }
+    }
+  />
+  <li
+    className="sc-bdVaJa jCWwbl"
+    color="#bbb"
+    data-itemid="0"
+    data-testid="picker-item"
+    fontSize={16}
+    height={40}
+  >
+    React
+  </li>
+  <li
+    className="sc-bdVaJa gnvgww"
+    color="#bbb"
+    data-itemid="1"
+    data-testid="picker-item"
+    fontSize={16}
+    height={40}
+  >
+    Angular
+  </li>
+  <li
+    className="sc-bdVaJa gnvgww"
+    color="#bbb"
+    data-itemid="2"
+    data-testid="picker-item"
+    fontSize={16}
+    height={40}
+  >
+    Vue
+  </li>
+  <li
+    className="sc-bdVaJa gnvgww"
+    color="#bbb"
+    data-itemid="3"
+    data-testid="picker-item"
+    fontSize={16}
+    height={40}
+  >
+    TypeScript
+  </li>
+  <li
+    className="sc-bdVaJa gnvgww"
+    color="#bbb"
+    data-itemid="4"
+    data-testid="picker-item"
+    fontSize={16}
+    height={40}
+  >
+    JavaScript
+  </li>
+  <li
+    className="sc-bdVaJa gnvgww"
+    color="#bbb"
+    data-itemid="5"
+    data-testid="picker-item"
+    fontSize={16}
+    height={40}
+  >
+    ReactNative
+  </li>
+  <li
+    className="sc-bdVaJa gnvgww"
+    color="#bbb"
+    data-itemid="6"
+    data-testid="picker-item"
+    fontSize={16}
+    height={40}
+  >
+    Flow
+  </li>
+  <li
+    className="sc-bdVaJa gnvgww"
+    color="#bbb"
+    data-itemid="7"
+    data-testid="picker-item"
+    fontSize={16}
+    height={40}
+  >
+    jQuery
+  </li>
+  <li
+    className="sc-bdVaJa gnvgww"
+    color="#bbb"
+    data-itemid="8"
+    data-testid="picker-item"
+    fontSize={16}
+    height={40}
+  >
+    Next
+  </li>
+  <li
+    className="sc-bdVaJa gnvgww"
+    color="#bbb"
+    data-itemid="9"
+    data-testid="picker-item"
+    fontSize={16}
+    height={40}
+  >
+    Nuxt
+  </li>
+  <li
+    className="sc-bdVaJa gnvgww"
+    color="#bbb"
+    data-itemid="10"
+    data-testid="picker-item"
+    fontSize={16}
+    height={40}
+  >
+    Node
+  </li>
+  <li
+    className="sc-bdVaJa gnvgww"
+    color="#bbb"
+    data-itemid="11"
+    data-testid="picker-item"
+    fontSize={16}
+    height={40}
+  >
+    Deno
+  </li>
+  <li
+    className="sc-bdVaJa gnvgww"
+    color="#bbb"
+    data-itemid="12"
+    data-testid="picker-item"
+    fontSize={16}
+    height={40}
+  >
+    Nest
+  </li>
+  <div
+    style={
+      Object {
+        "height": 80,
+      }
+    }
+  />
+</ul>
+`;
+
+exports[`Storyshots WheelPicker Select 1`] = `
+<ul
+  className="sc-bwzfXH czMigF"
+  data-testid="picker-list"
+  height={200}
+  width="100px"
+>
+  <div
+    style={
+      Object {
+        "height": 80,
+      }
+    }
+  />
+  <li
+    className="sc-bdVaJa hZjbcl"
+    color="#999"
+    data-itemid="0"
+    data-testid="picker-item"
+    fontSize={16}
+    height={40}
+  >
+    React
+  </li>
+  <li
+    className="sc-bdVaJa hZjbcl"
+    color="#999"
+    data-itemid="1"
+    data-testid="picker-item"
+    fontSize={16}
+    height={40}
+  >
+    Angular
+  </li>
+  <li
+    className="sc-bdVaJa hZjbcl"
+    color="#999"
+    data-itemid="2"
+    data-testid="picker-item"
+    fontSize={16}
+    height={40}
+  >
+    Vue
+  </li>
+  <li
+    className="sc-bdVaJa drHIOi"
+    color="#999"
+    data-itemid="3"
+    data-testid="picker-item"
+    fontSize={16}
+    height={40}
+  >
+    TypeScript
+  </li>
+  <li
+    className="sc-bdVaJa hZjbcl"
+    color="#999"
+    data-itemid="4"
+    data-testid="picker-item"
+    fontSize={16}
+    height={40}
+  >
+    JavaScript
+  </li>
+  <li
+    className="sc-bdVaJa hZjbcl"
+    color="#999"
+    data-itemid="5"
+    data-testid="picker-item"
+    fontSize={16}
+    height={40}
+  >
+    ReactNative
+  </li>
+  <li
+    className="sc-bdVaJa hZjbcl"
+    color="#999"
+    data-itemid="6"
+    data-testid="picker-item"
+    fontSize={16}
+    height={40}
+  >
+    Flow
+  </li>
+  <li
+    className="sc-bdVaJa hZjbcl"
+    color="#999"
+    data-itemid="7"
+    data-testid="picker-item"
+    fontSize={16}
+    height={40}
+  >
+    jQuery
+  </li>
+  <li
+    className="sc-bdVaJa hZjbcl"
+    color="#999"
+    data-itemid="8"
+    data-testid="picker-item"
+    fontSize={16}
+    height={40}
+  >
+    Next
+  </li>
+  <li
+    className="sc-bdVaJa hZjbcl"
+    color="#999"
+    data-itemid="9"
+    data-testid="picker-item"
+    fontSize={16}
+    height={40}
+  >
+    Nuxt
+  </li>
+  <li
+    className="sc-bdVaJa hZjbcl"
+    color="#999"
+    data-itemid="10"
+    data-testid="picker-item"
+    fontSize={16}
+    height={40}
+  >
+    Node
+  </li>
+  <li
+    className="sc-bdVaJa hZjbcl"
+    color="#999"
+    data-itemid="11"
+    data-testid="picker-item"
+    fontSize={16}
+    height={40}
+  >
+    Deno
+  </li>
+  <li
+    className="sc-bdVaJa hZjbcl"
+    color="#999"
+    data-itemid="12"
+    data-testid="picker-item"
+    fontSize={16}
+    height={40}
+  >
+    Nest
+  </li>
+  <div
+    style={
+      Object {
+        "height": 80,
+      }
+    }
+  />
+</ul>
+`;
+
+exports[`Storyshots WheelPickerItem Active 1`] = `
+<li
+  className="sc-bdVaJa kGcLkW"
+  color="black"
+  data-itemid="0"
+  data-testid="picker-item"
+  fontSize={16}
+  height={30}
+>
+  0
+</li>
+`;
+
+exports[`Storyshots WheelPickerItem Normal 1`] = `
+<li
+  className="sc-bdVaJa igOsDi"
+  color="black"
+  data-itemid="0"
+  data-testid="picker-item"
+  fontSize={16}
+  height={30}
+>
+  0
+</li>
+`;
