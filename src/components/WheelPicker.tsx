@@ -1,4 +1,3 @@
-import "intersection-observer";
 import React from "react";
 import styled from "styled-components";
 import WheelPickerItem from "@/components/WheelPickerItem";
