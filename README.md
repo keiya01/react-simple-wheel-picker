@@ -2,7 +2,7 @@
   <h1>react-simple-wheel-picker</h1>
 </div>
 
-# How To Use
+# Usage
 - `npm run react-simple-wheel-picker` or `yarn add react-simple-wheel-picker`
 
 ```js
