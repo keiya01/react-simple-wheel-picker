@@ -24,3 +24,20 @@ export const normal: React.FC = () => {
     />
   );
 };
+
+export const select: React.FC = () => {
+  return (
+    <Component
+      data={pickerData}
+      selectedID={pickerData[3].id}
+      onChange={onChange}
+      height={200}
+      itemHeight={40}
+      width={100}
+      color="#999"
+      activeColor="#333"
+      backgroundColor="#fff"
+      shadowColor="#eee"
+    />
+  );
+};
