@@ -2,7 +2,9 @@
   <h1>react-simple-wheel-picker</h1>
 	<br>
 </div>
+
 ![demo](https://raw.githubusercontent.com/keiya01/react-simple-wheel-picker/master/wheel_picker.gif)
+
 <div align="center">
 	<br>
 	<p>You can set up simple and flexible wheel picker</p>
