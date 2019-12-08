@@ -65,16 +65,16 @@ const Sample = () => {
 
 # Props
 
-|      props      |               type               | require  | description                                                                                   |
-| :-------------: | :------------------------------: | :------: | :-------------------------------------------------------------------------------------------- |
-|      data       | Array<{id: string, value: string | number}> | true                                                                                          | It should be array of object that have `id` and `value` |
-|   selectedID    |              string              |   true   | You can set default data id                                                                   |
-|    onChange     | function(target: Element): void  |   true   | You can get `value` or `id` from `target.textContent` or `target.getAttribute("data-itemid")` |
-|     height      |              number              |   true   | You can specify height to wheel picker                                                        |
-|   itemHeight    |              number              |   true   | You can specify item height to wheel picker item                                              |
-|      width      |              number              |  false   | You can specify width to wheel picker                                                         |
-|      color      |              string              |  false   | You can specify color to picker value                                                         |
-|   activeColor   |              string              |  false   | You can specify active color to picker value                                                  |
-|    fontSize     |              number              |  false   | You can specify font size to picker value                                                     |
-| backgroundColor |              string              |  false   | You can specify background color to wheel picker                                              |
-|   shadowColor   |              string              |  false   | You can specify shadow color to wheel picker                                                  |
+|      props      |                     type                     | require | description                                                                                   |
+| :-------------: | :------------------------------------------: | :-----: | :-------------------------------------------------------------------------------------------- |
+|      data       | Array<{id: string, value: string \| number}> |  true   | It should be array of object that have `id` and `value`                                       |
+|   selectedID    |                    string                    |  true   | You can set default data id                                                                   |
+|    onChange     |       function(target: Element): void        |  true   | You can get `value` or `id` from `target.textContent` or `target.getAttribute("data-itemid")` |
+|     height      |                    number                    |  true   | You can specify height to wheel picker                                                        |
+|   itemHeight    |                    number                    |  true   | You can specify item height to wheel picker item                                              |
+|      width      |                    number                    |  false  | You can specify width to wheel picker                                                         |
+|      color      |                    string                    |  false  | You can specify color to picker value                                                         |
+|   activeColor   |                    string                    |  false  | You can specify active color to picker value                                                  |
+|    fontSize     |                    number                    |  false  | You can specify font size to picker value                                                     |
+| backgroundColor |                    string                    |  false  | You can specify background color to wheel picker                                              |
+|   shadowColor   |                    string                    |  false  | You can specify shadow color to wheel picker                                                  |
