@@ -1,6 +1,6 @@
 <div align="center">
   <h1>react-simple-wheel-picker</h1>
-	![demo](https://raw.githubusercontent.com/keiya01/react-simple-wheel-picker/master/wheel_picker.gif)
+	[![demo]](https://raw.githubusercontent.com/keiya01/react-simple-wheel-picker/master/wheel_picker.gif)
 	<br>
 	<p>You can set up simple and flexible wheel picker</p>
 </div>
