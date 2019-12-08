@@ -1,10 +1,10 @@
 {
 	"name": "react-simple-wheel-picker",
-	"version": "0.0.5",
+	"version": "0.1.1",
 	"main": "dist/index.js",
 	"files": [
-    "dist"
-  ],
+		"dist"
+	],
 	"license": "MIT",
 	"author": {
 		"name": "Keiya Sasaki",
@@ -14,7 +14,12 @@
 		"type": "git",
 		"url": "git+https://github.com/keiya01/react-wheel-datepicker.git"
 	},
-	"keywords": [ "react", "select", "wheel-picker", "picker" ],
+	"keywords": [
+		"react",
+		"select",
+		"wheel-picker",
+		"picker"
+	],
 	"bugs": {
 		"url": "https://github.com/keiya01/react-wheel-datepicker/issues"
 	},
@@ -32,11 +37,15 @@
 		}
 	},
 	"lint-staged": {
-		"src/**/*.{ts, tsx}": [ "jest --bail --findRelatedTests", "eslint --fix", "git add" ]
+		"src/**/*.{ts, tsx}": [
+			"jest --bail --findRelatedTests",
+			"eslint --fix",
+			"git add"
+		]
 	},
 	"resolutions": {
-    "@types/react": "^16.9.13"
-  },
+		"@types/react": "^16.9.13"
+	},
 	"devDependencies": {
 		"@babel/core": "^7.7.4",
 		"@babel/preset-env": "^7.7.4",
