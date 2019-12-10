@@ -1,9 +1,10 @@
-import React, { useRef } from "react";
+import React from "react";
 import WheelPicker from "../WheelPicker";
 import { render } from "@testing-library/react";
 
 declare global {
   interface Window {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     IntersectionObserver: any;
   }
 }
@@ -16,21 +17,22 @@ jest.mock("react", () => ({
 }));
 
 describe("WheelPicker", () => {
-  beforeAll(() => {
-    const observe = jest.fn();
-    window.IntersectionObserver = jest.fn(function(this: {
-      observe: () => void;
-    }) {
-      this.observe = observe;
-    });
-  });
-
   describe("Set padding top to WheelPicker", () => {
+    beforeAll(() => {
+      const observe = jest.fn();
+      window.IntersectionObserver = jest.fn(function(this: {
+        observe: () => void;
+      }) {
+        this.observe = observe;
+      });
+    });
+
     it("should be 0px when height is 100px and itemHeight is 100px", () => {
       const { getByTestId } = render(
         <WheelPicker
           data={[{ id: "1", value: "test" }]}
           selectedID="1"
+          // eslint-disable-next-line no-empty-function
           onChange={() => {}}
           height={100}
           itemHeight={100}
@@ -38,6 +40,7 @@ describe("WheelPicker", () => {
       );
 
       const elm = getByTestId("picker-list");
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const spaceItem: any = elm.children[0];
 
       expect(spaceItem.style.height).toEqual("0px");
@@ -48,6 +51,7 @@ describe("WheelPicker", () => {
         <WheelPicker
           data={[{ id: "1", value: "test" }]}
           selectedID="1"
+          // eslint-disable-next-line no-empty-function
           onChange={() => {}}
           height={200}
           itemHeight={50}
@@ -55,6 +59,7 @@ describe("WheelPicker", () => {
       );
 
       const elm = getByTestId("picker-list");
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const spaceItem: any = elm.children[0];
 
       expect(spaceItem.style.height).toEqual("75px");
