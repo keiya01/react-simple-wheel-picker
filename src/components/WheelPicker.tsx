@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import styled from "styled-components";
 import WheelPickerItem from "../components/WheelPickerItem";
 import useObsever from "../hooks/useObserver";
@@ -19,10 +19,10 @@ const List = styled.ul`
     backgroundColor: string;
     shadowColor: string;
   }): string => `
-    height: ${props.height}px;
-    width: ${props.width};
-    background-color: ${props.backgroundColor};
-    box-shadow: 1px 3px 10px ${props.shadowColor} inset;
+  height: ${props.height}px;
+  width: ${props.width};
+  background-color: ${props.backgroundColor};
+  box-shadow: 1px 3px 10px ${props.shadowColor} inset;
   `}
 `;
 
@@ -97,6 +97,11 @@ const WheelPicker: React.FC<WheelPickerProps> = ({
     shadowColor
   });
 
+  const spaceHeight = useMemo(() => calculateSpaceHeight(height, itemHeight), [
+    height,
+    itemHeight
+  ]);
+
   return (
     <List
       ref={root}
@@ -106,7 +111,7 @@ const WheelPicker: React.FC<WheelPickerProps> = ({
       backgroundColor={styles.backgroundColor}
       shadowColor={styles.shadowColor}
     >
-      <div style={{ height: calculateSpaceHeight(height, itemHeight) }} />
+      <div style={{ height: spaceHeight }} />
       {data.map(item => (
         <WheelPickerItem
           key={item.id}
@@ -117,7 +122,7 @@ const WheelPicker: React.FC<WheelPickerProps> = ({
           forwardRef={refs[item.id]}
         />
       ))}
-      <div style={{ height: calculateSpaceHeight(height, itemHeight) }} />
+      <div style={{ height: spaceHeight }} />
     </List>
   );
 };
