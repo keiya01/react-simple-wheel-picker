@@ -45,7 +45,6 @@ const WheelPickerItem: React.FC<WheelPickerItemProps> = ({
     <Item
       ref={forwardRef}
       data-itemid={id}
-      data-testid="picker-item"
       isActive={id === activeID}
       height={height}
       color={color}
