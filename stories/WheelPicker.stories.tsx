@@ -57,6 +57,7 @@ export const labeled: React.FC = () => {
         itemHeight={40}
         idName="select"
         titleID="select programming languages"
+        required={true}
         width={100}
         color="#999"
         activeColor="#333"

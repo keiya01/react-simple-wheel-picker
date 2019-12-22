@@ -69,6 +69,7 @@ export interface WheelPickerProps {
   idName?: string;
   titleID?: string;
   titleText?: string;
+  required?: boolean;
   width?: number;
   color?: string;
   activeColor?: string;
@@ -94,7 +95,8 @@ const WheelPicker: React.FC<WheelPickerProps> = (
     fontSize,
     backgroundColor,
     shadowColor,
-    focusColor
+    focusColor,
+    required
   },
   ref
 ) => {
@@ -132,9 +134,10 @@ const WheelPicker: React.FC<WheelPickerProps> = (
     <List
       id={idName}
       tabIndex={0}
-      role="menu"
+      role="listbox"
       aria-labelledby={titleID}
       aria-label={titleText}
+      aria-required={required}
       ref={root}
       data-testid="picker-list"
       height={height}

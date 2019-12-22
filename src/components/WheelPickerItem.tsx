@@ -41,15 +41,15 @@ const WheelPickerItem: React.FC<WheelPickerItemProps> = ({
   fontSize,
   forwardRef
 }) => {
-  const checked = id === activeID;
+  const selected = id === activeID;
   return (
     <Item
-      role="menuitemradio"
-      aria-checked={checked}
+      role="option"
+      aria-selected={selected}
       aria-labelledby={value.toString()}
       ref={forwardRef}
       data-itemid={id}
-      isActive={checked}
+      isActive={selected}
       height={height}
       color={color}
       activeColor={activeColor}
