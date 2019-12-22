@@ -4,7 +4,6 @@ import WheelPickerItem from "../components/WheelPickerItem";
 import useObsever from "../hooks/useObserver";
 
 const List = styled.ul`
-  position: relative;
   margin: 0;
   padding: 0;
   display: inline-block;
@@ -18,11 +17,15 @@ const List = styled.ul`
     width: string;
     backgroundColor: string;
     shadowColor: string;
+    focusColor: string;
   }): string => `
-  height: ${props.height}px;
-  width: ${props.width};
-  background-color: ${props.backgroundColor};
-  box-shadow: 1px 3px 10px ${props.shadowColor} inset;
+    height: ${props.height}px;
+    width: ${props.width};
+    background-color: ${props.backgroundColor};
+    box-shadow: 1px 3px 10px ${props.shadowColor} inset;
+    &:focus {
+      outline: 2px solid ${props.focusColor};
+    }
   `}
 `;
 
@@ -38,6 +41,7 @@ const setStyles = (styles: {
   fontSize?: number;
   backgroundColor?: string;
   shadowColor?: string;
+  focusColor?: string;
 }) => {
   const _color = styles.color || "#fff";
   return {
@@ -46,7 +50,8 @@ const setStyles = (styles: {
     fontSize: styles.fontSize || 16,
     backgroundColor: styles.backgroundColor || "#555",
     shadowColor: styles.shadowColor || "#333",
-    width: styles.width ? `${styles.width}px` : "100%"
+    width: styles.width ? `${styles.width}px` : "100%",
+    focusColor: styles.focusColor ? styles.focusColor : "blue"
   };
 };
 
@@ -61,12 +66,15 @@ export interface WheelPickerProps {
   onChange: (target: Element) => void;
   height: number;
   itemHeight: number;
+  titleID?: string;
+  titleText?: string;
   width?: number;
   color?: string;
   activeColor?: string;
   fontSize?: number;
   backgroundColor?: string;
   shadowColor?: string;
+  focusColor?: string;
 }
 
 const WheelPicker: React.FC<WheelPickerProps> = ({
@@ -75,12 +83,15 @@ const WheelPicker: React.FC<WheelPickerProps> = ({
   onChange,
   height,
   itemHeight,
+  titleID,
+  titleText,
   width,
   color,
   activeColor,
   fontSize,
   backgroundColor,
-  shadowColor
+  shadowColor,
+  focusColor
 }) => {
   const { root, refs, activeID } = useObsever(
     data,
@@ -94,7 +105,8 @@ const WheelPicker: React.FC<WheelPickerProps> = ({
     activeColor,
     fontSize,
     backgroundColor,
-    shadowColor
+    shadowColor,
+    focusColor
   });
 
   const spaceHeight = useMemo(() => calculateSpaceHeight(height, itemHeight), [
@@ -104,12 +116,17 @@ const WheelPicker: React.FC<WheelPickerProps> = ({
 
   return (
     <List
+      tabIndex={0}
+      role="menu"
+      aria-labelledby={titleID}
+      aria-label={titleText}
       ref={root}
       data-testid="picker-list"
       height={height}
       width={styles.width}
       backgroundColor={styles.backgroundColor}
       shadowColor={styles.shadowColor}
+      focusColor={styles.focusColor}
     >
       <div style={{ height: spaceHeight }} />
       {data.map(item => (
