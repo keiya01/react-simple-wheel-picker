@@ -18,6 +18,7 @@ export const normal: React.FC = () => {
       onChange={onChange}
       height={200}
       itemHeight={40}
+      titleText="select programming languages"
       width={100}
       color="#bbb"
       activeColor="#fff"
@@ -33,6 +34,7 @@ export const select: React.FC = () => {
       onChange={onChange}
       height={200}
       itemHeight={40}
+      titleText="select programming languages"
       width={100}
       color="#999"
       activeColor="#333"
