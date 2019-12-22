@@ -5,13 +5,15 @@
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:prettier/recommended",
     "prettier/react",
-    "prettier/@typescript-eslint"
+    "prettier/@typescript-eslint",
+    "plugin:jsx-a11y/recommended"
   ],
   "plugins": [
     "react",
     "react-hooks",
     "prettier",
-    "@typescript-eslint"
+    "@typescript-eslint",
+    "jsx-a11y"
   ],
   "parser": "@typescript-eslint/parser",
   "env": {
