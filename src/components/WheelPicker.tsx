@@ -66,6 +66,7 @@ export interface WheelPickerProps {
   onChange: (target: Element) => void;
   height: number;
   itemHeight: number;
+  idName?: string;
   titleID?: string;
   titleText?: string;
   width?: number;
@@ -83,6 +84,7 @@ const WheelPicker: React.FC<WheelPickerProps> = ({
   onChange,
   height,
   itemHeight,
+  idName,
   titleID,
   titleText,
   width,
@@ -116,6 +118,7 @@ const WheelPicker: React.FC<WheelPickerProps> = ({
 
   return (
     <List
+      id={idName}
       tabIndex={0}
       role="menu"
       aria-labelledby={titleID}
