@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useImperativeHandle, forwardRef } from "react";
 import styled from "styled-components";
 import WheelPickerItem from "../components/WheelPickerItem";
 import useObsever from "../hooks/useObserver";
@@ -78,23 +78,26 @@ export interface WheelPickerProps {
   focusColor?: string;
 }
 
-const WheelPicker: React.FC<WheelPickerProps> = ({
-  data,
-  selectedID,
-  onChange,
-  height,
-  itemHeight,
-  idName,
-  titleID,
-  titleText,
-  width,
-  color,
-  activeColor,
-  fontSize,
-  backgroundColor,
-  shadowColor,
-  focusColor
-}) => {
+const WheelPicker: React.FC<WheelPickerProps> = (
+  {
+    data,
+    selectedID,
+    onChange,
+    height,
+    itemHeight,
+    idName,
+    titleID,
+    titleText,
+    width,
+    color,
+    activeColor,
+    fontSize,
+    backgroundColor,
+    shadowColor,
+    focusColor
+  },
+  ref
+) => {
   const { root, refs, activeID } = useObsever(
     data,
     selectedID,
@@ -115,6 +118,15 @@ const WheelPicker: React.FC<WheelPickerProps> = ({
     height,
     itemHeight
   ]);
+
+  useImperativeHandle(ref, () => ({
+    focus: () => {
+      root.current && root.current.focus();
+    },
+    blur: () => {
+      root.current && root.current.blur();
+    }
+  }));
 
   return (
     <List
@@ -147,4 +159,9 @@ const WheelPicker: React.FC<WheelPickerProps> = ({
   );
 };
 
-export default WheelPicker;
+export interface WheelPickerRef {
+  focus: () => void;
+  blur: () => void;
+}
+
+export default forwardRef<WheelPickerRef, WheelPickerProps>(WheelPicker);
