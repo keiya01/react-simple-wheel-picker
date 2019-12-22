@@ -43,3 +43,26 @@ export const select: React.FC = () => {
     />
   );
 };
+
+export const labeled: React.FC = () => {
+  return (
+    <form>
+      <label htmlFor="select">progarmming languages</label>
+      <br />
+      <Component
+        data={pickerData}
+        selectedID={pickerData[3].id}
+        onChange={onChange}
+        height={200}
+        itemHeight={40}
+        idName="select"
+        titleID="select programming languages"
+        width={100}
+        color="#999"
+        activeColor="#333"
+        backgroundColor="#fff"
+        shadowColor="#eee"
+      />
+    </form>
+  );
+};
