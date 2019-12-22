@@ -14,7 +14,6 @@ export const normal: React.FC = () => (
     color="black"
     activeColor="black"
     fontSize={16}
-    forwardRef={React.createRef()}
   />
 );
 
@@ -27,6 +26,5 @@ export const active: React.FC = () => (
     color="black"
     activeColor="black"
     fontSize={16}
-    forwardRef={React.createRef()}
   />
 );

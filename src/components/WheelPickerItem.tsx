@@ -1,4 +1,4 @@
-import React, { RefObject } from "react";
+import React, { forwardRef } from "react";
 import styled from "styled-components";
 
 const Item = styled.li`
@@ -28,26 +28,19 @@ export interface WheelPickerItemProps {
   color: string;
   activeColor: string;
   fontSize: number;
-  forwardRef: RefObject<HTMLLIElement>;
 }
 
-const WheelPickerItem: React.FC<WheelPickerItemProps> = ({
-  id,
-  value,
-  activeID,
-  height,
-  color,
-  activeColor,
-  fontSize,
-  forwardRef
-}) => {
+const WheelPickerItem: React.FC<WheelPickerItemProps> = (
+  { id, value, activeID, height, color, activeColor, fontSize },
+  ref
+) => {
   const selected = id === activeID;
   return (
     <Item
       role="option"
       aria-selected={selected}
       aria-labelledby={value.toString()}
-      ref={forwardRef}
+      ref={ref}
       data-itemid={id}
       isActive={selected}
       height={height}
@@ -60,4 +53,4 @@ const WheelPickerItem: React.FC<WheelPickerItemProps> = ({
   );
 };
 
-export default WheelPickerItem;
+export default forwardRef<HTMLLIElement, WheelPickerItemProps>(WheelPickerItem);

@@ -154,7 +154,7 @@ const WheelPicker: React.FC<WheelPickerProps> = (
           {...styles}
           height={itemHeight}
           activeID={activeID}
-          forwardRef={refs[item.id]}
+          ref={refs[item.id]}
         />
       ))}
       <div style={{ height: spaceHeight }} />
