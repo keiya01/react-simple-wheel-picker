@@ -1,5 +1,5 @@
 import React from "react";
-import WheelPicker from "../WheelPicker";
+import WheelPicker, { WheelPickerRef } from "../WheelPicker";
 import { render } from "@testing-library/react";
 
 declare global {
@@ -11,22 +11,21 @@ declare global {
 
 declare const window: Window;
 
+window.IntersectionObserver = jest.fn();
+
 jest.mock("react", () => ({
   ...jest.requireActual("react"),
-  useRef: () => ({ current: { scrollTop: jest.fn() } })
+  useRef: () => ({
+    current: {
+      observe: jest.fn(),
+      disconnect: jest.fn(),
+      scrollTop: jest.fn()
+    }
+  })
 }));
 
 describe("WheelPicker", () => {
   describe("Set padding top to WheelPicker", () => {
-    beforeAll(() => {
-      const observe = jest.fn();
-      window.IntersectionObserver = jest.fn(function(this: {
-        observe: () => void;
-      }) {
-        this.observe = observe;
-      });
-    });
-
     it("should be 0px when height is 100px and itemHeight is 100px", () => {
       const { getByTestId } = render(
         <WheelPicker
@@ -63,6 +62,55 @@ describe("WheelPicker", () => {
       const spaceItem: any = elm.children[0];
 
       expect(spaceItem.style.height).toEqual("75px");
+    });
+  });
+
+  describe("To get ref from WheelPicker", () => {
+    it("should be focused to WheelPicker when focus function was executed", () => {
+      const ref = React.createRef<WheelPickerRef>();
+      const { getByTestId } = render(
+        <WheelPicker
+          data={[{ id: "1", value: "test" }]}
+          selectedID="1"
+          ref={ref}
+          // eslint-disable-next-line no-empty-function
+          onChange={() => {}}
+          height={100}
+          itemHeight={100}
+        />
+      );
+
+      const pickerList = getByTestId("picker-list");
+
+      if (ref.current) {
+        ref.current.focus();
+      }
+
+      expect(document.activeElement).toEqual(pickerList);
+    });
+
+    it("should be unfocused to WheelPicker when blur function was executed", () => {
+      const ref = React.createRef<WheelPickerRef>();
+      const { getByTestId } = render(
+        <WheelPicker
+          data={[{ id: "1", value: "test" }]}
+          selectedID="1"
+          ref={ref}
+          // eslint-disable-next-line no-empty-function
+          onChange={() => {}}
+          height={100}
+          itemHeight={100}
+        />
+      );
+
+      const pickerList = getByTestId("picker-list");
+
+      if (ref.current) {
+        ref.current.focus();
+        ref.current.blur();
+      }
+
+      expect(document.activeElement).not.toEqual(pickerList);
     });
   });
 });

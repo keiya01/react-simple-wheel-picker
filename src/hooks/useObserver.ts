@@ -78,7 +78,14 @@ const useObsever = (
         root.current.scrollTo(0, item.offsetTop - firstItem.offsetTop);
       }
     }
-  }, [data, refs, root]); // eslint-disable-line
+
+    return () => {
+      if (observer.current) {
+        observer.current.disconnect();
+        observer.current = null;
+      }
+    };
+  }, [data, refs, root, itemHeight]); // eslint-disable-line
 
   return {
     root,
