@@ -11,22 +11,21 @@ declare global {
 
 declare const window: Window;
 
+window.IntersectionObserver = jest.fn();
+
 jest.mock("react", () => ({
   ...jest.requireActual("react"),
-  useRef: () => ({ current: { scrollTop: jest.fn() } })
+  useRef: () => ({
+    current: {
+      observe: jest.fn(),
+      disconnect: jest.fn(),
+      scrollTop: jest.fn()
+    }
+  })
 }));
 
 describe("WheelPicker", () => {
   describe("Set padding top to WheelPicker", () => {
-    beforeAll(() => {
-      const observe = jest.fn();
-      window.IntersectionObserver = jest.fn(function(this: {
-        observe: () => void;
-      }) {
-        this.observe = observe;
-      });
-    });
-
     it("should be 0px when height is 100px and itemHeight is 100px", () => {
       const { getByTestId } = render(
         <WheelPicker
@@ -67,15 +66,6 @@ describe("WheelPicker", () => {
   });
 
   describe("To get ref from WheelPicker", () => {
-    beforeAll(() => {
-      const observe = jest.fn();
-      window.IntersectionObserver = jest.fn(function(this: {
-        observe: () => void;
-      }) {
-        this.observe = observe;
-      });
-    });
-
     it("should be focused to WheelPicker when focus function was executed", () => {
       const ref = React.createRef<WheelPickerRef>();
       const { getByTestId } = render(

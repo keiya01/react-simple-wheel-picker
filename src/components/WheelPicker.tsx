@@ -1,4 +1,10 @@
-import React, { useMemo, useImperativeHandle, forwardRef } from "react";
+import React, {
+  useMemo,
+  useImperativeHandle,
+  forwardRef,
+  useState,
+  useEffect
+} from "react";
 import styled from "styled-components";
 import WheelPickerItem from "../components/WheelPickerItem";
 import useObsever from "../hooks/useObserver";
@@ -100,10 +106,11 @@ const WheelPicker: React.FC<WheelPickerProps> = (
   },
   ref
 ) => {
+  const [_itemHeight, setItemHeight] = useState(itemHeight);
   const { root, refs, activeID } = useObsever(
     data,
     selectedID,
-    itemHeight,
+    _itemHeight,
     onChange
   );
   const styles = setStyles({
@@ -116,9 +123,9 @@ const WheelPicker: React.FC<WheelPickerProps> = (
     focusColor
   });
 
-  const spaceHeight = useMemo(() => calculateSpaceHeight(height, itemHeight), [
-    height,
-    itemHeight
+  const spaceHeight = useMemo(() => calculateSpaceHeight(height, _itemHeight), [
+    _itemHeight,
+    height
   ]);
 
   useImperativeHandle(ref, () => ({
@@ -129,6 +136,22 @@ const WheelPicker: React.FC<WheelPickerProps> = (
       root.current && root.current.blur();
     }
   }));
+
+  useEffect(() => {
+    let maxHeight = itemHeight;
+    Object.keys(refs).map(id => {
+      const elm = refs[id].current;
+      if (!elm) {
+        return;
+      }
+
+      const h = elm.clientHeight;
+      if (h > maxHeight) {
+        maxHeight = h;
+      }
+    });
+    setItemHeight(maxHeight);
+  }, [itemHeight, refs]);
 
   return (
     <List
@@ -152,7 +175,7 @@ const WheelPicker: React.FC<WheelPickerProps> = (
           key={item.id}
           {...item}
           {...styles}
-          height={itemHeight}
+          height={_itemHeight}
           activeID={activeID}
           ref={refs[item.id]}
         />
