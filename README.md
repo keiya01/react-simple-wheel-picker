@@ -81,6 +81,7 @@ const Sample = () => {
 | backgroundColor |                    string                    |  false  | You can specify background color to wheel picker                                              |
 |   shadowColor   |                    string                    |  false  | You can specify shadow color to wheel picker                                                  |
 |   focusColor   |                    string                    |  false  | You can specify focus color that is painted border color when WheelPicker is focused                                                   |
+|   ref   |                    WheelPickerRef                    |  false  | You can refer element to use focus or blur function by specifying ref props                                                   |
 
 # Accessibility Props
 
