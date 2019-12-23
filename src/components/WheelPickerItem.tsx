@@ -78,6 +78,7 @@ const WheelPickerItem: React.FC<WheelPickerItemProps> = (
       aria-labelledby={value.toString()}
       ref={ref}
       data-itemid={id}
+      data-itemvalue={value}
       height={height}
     >
       {selected && <Icon fontSize={fontSize}>&#10003;</Icon>}
