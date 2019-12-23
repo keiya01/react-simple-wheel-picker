@@ -53,6 +53,7 @@ const Sample = () => {
 			onChange={handleOnChange}
 			height={150}
 			width={100}
+			titleText="Enter value same as aria-label"
 			itemHeight={30}
 			selectedID={data[0].id}
 			color="#ccc"
