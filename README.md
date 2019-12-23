@@ -53,6 +53,7 @@ const Sample = () => {
 			onChange={handleOnChange}
 			height={150}
 			width={100}
+			titleText="Enter value same as aria-label"
 			itemHeight={30}
 			selectedID={data[0].id}
 			color="#ccc"
@@ -80,6 +81,7 @@ const Sample = () => {
 | backgroundColor |                    string                    |  false  | You can specify background color to wheel picker                                              |
 |   shadowColor   |                    string                    |  false  | You can specify shadow color to wheel picker                                                  |
 |   focusColor   |                    string                    |  false  | You can specify focus color that is painted border color when WheelPicker is focused                                                   |
+|   ref   |                    WheelPickerRef                    |  false  | You can refer element to use focus or blur function by specifying ref props                                                   |
 
 # Accessibility Props
 

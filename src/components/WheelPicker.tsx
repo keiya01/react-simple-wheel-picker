@@ -69,7 +69,7 @@ export interface PickerData {
 export interface WheelPickerProps {
   data: PickerData[];
   selectedID: string;
-  onChange: (target: Element) => void;
+  onChange: (data: PickerData) => void;
   height: number;
   itemHeight: number;
   idName?: string;

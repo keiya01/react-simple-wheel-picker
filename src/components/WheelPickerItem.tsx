@@ -26,7 +26,7 @@ const Icon = styled.span`
   position: absolute;
   top: 0;
   bottom: 0;
-  left: -5px;
+  left: -10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -78,6 +78,7 @@ const WheelPickerItem: React.FC<WheelPickerItemProps> = (
       aria-labelledby={value.toString()}
       ref={ref}
       data-itemid={id}
+      data-itemvalue={value}
       height={height}
     >
       {selected && <Icon fontSize={fontSize}>&#10003;</Icon>}

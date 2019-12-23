@@ -31,7 +31,7 @@ const useObsever = (
   data: PickerData[],
   selectedID: string,
   itemHeight: number,
-  onChange: (target: Element) => void
+  onChange: (data: PickerData) => void
 ) => {
   const root = useRef<HTMLUListElement | null>(null);
   const refs = useMemo(setRefs(data), [data]);
@@ -49,13 +49,14 @@ const useObsever = (
         }
 
         const itemID = entry.target.getAttribute("data-itemid");
-        if (!itemID) {
-          return;
+        const itemValue = entry.target.getAttribute("data-itemvalue");
+        if (!itemID || !itemValue) {
+          throw new Error("Can not found id or value");
         }
 
         onScroll(data, itemID);
         setActiveID(itemID);
-        onChange(entry.target);
+        onChange({ id: itemID, value: itemValue });
       });
     };
 
