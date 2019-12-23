@@ -63,7 +63,7 @@ const Sample = () => {
 };
 ```
 
-# Props
+# Normal Props
 
 |      props      |                     type                     | require | description                                                                                   |
 | :-------------: | :------------------------------------------: | :-----: | :-------------------------------------------------------------------------------------------- |
@@ -73,8 +73,24 @@ const Sample = () => {
 |     height      |                    number                    |  true   | You can specify height to wheel picker                                                        |
 |   itemHeight    |                    number                    |  true   | You can specify item height to wheel picker item                                              |
 |      width      |                    number                    |  false  | You can specify width to wheel picker                                                         |
+|      idName      |                    string                    |  false  | You can specify id name to have relation to `htmlFor` label element                                                         |
 |      color      |                    string                    |  false  | You can specify color to picker value                                                         |
 |   activeColor   |                    string                    |  false  | You can specify active color to picker value                                                  |
 |    fontSize     |                    number                    |  false  | You can specify font size to picker value                                                     |
 | backgroundColor |                    string                    |  false  | You can specify background color to wheel picker                                              |
 |   shadowColor   |                    string                    |  false  | You can specify shadow color to wheel picker                                                  |
+|   focusColor   |                    string                    |  false  | You can specify focus color that is painted border color when WheelPicker is focused                                                   |
+
+# Accessibility Props
+
+|      props      |                     type                     | require | description                                  
+| :-------------: | :------------------------------------------: | :-----: | :---------- |
+| titleID | string | false | You can specify titleID that it is linked with aria-labelledby |
+| titleText | string | false | You can specify titleText that it is linked with aria-label |
+| required | boolean | false | You can specify required that it is linked with aria-required |
+
+If you want to know more about accessibility, you can check here(https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/listbox_role).
+
+# Accessibility for this package
+- Support aria-* and role options
+- Not supported operating keyboard (**It will support in the future**)

@@ -1,22 +1,58 @@
 import React, { forwardRef } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 const Item = styled.li`
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
   transition: transform ease 100ms;
+  ${(props: { height: number }): string => `
+    min-height: ${props.height}px;
+  `}
+`;
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
+const ICON_WIDTH = 20;
+const Icon = styled.span`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: ${ICON_WIDTH}px;
+  opacity: 0;
+  animation: ${fadeIn} 200ms ease-in;
+  animation-fill-mode: forwards;
+  animation-delay: 200ms;
+  ${(props: { fontSize: number }) => `
+    font-size: ${props.fontSize};
+  `}
+`;
+
+const Text = styled.p`
+  margin: 0;
+  text-align: left;
+  word-wrap: break-word;
+  padding-left: 10px;
   ${(props: {
     isActive: boolean;
-    height: number;
     color: string;
     fontSize: number;
     activeColor: string;
   }): string => `
-    height: ${props.height}px;
     color: ${props.isActive ? props.activeColor : props.color};
     font-size: ${props.fontSize}px;
-    ${props.isActive && `transform: scale(1.1);`}
   `}
 `;
 
@@ -42,13 +78,18 @@ const WheelPickerItem: React.FC<WheelPickerItemProps> = (
       aria-labelledby={value.toString()}
       ref={ref}
       data-itemid={id}
-      isActive={selected}
       height={height}
-      color={color}
-      activeColor={activeColor}
-      fontSize={fontSize}
     >
-      {value}
+      {selected && <Icon fontSize={fontSize}>&#10003;</Icon>}
+      <span style={{ width: ICON_WIDTH }}></span>
+      <Text
+        isActive={selected}
+        color={color}
+        activeColor={activeColor}
+        fontSize={fontSize}
+      >
+        {value}
+      </Text>
     </Item>
   );
 };
