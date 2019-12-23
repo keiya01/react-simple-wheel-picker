@@ -26,7 +26,7 @@ const Icon = styled.span`
   position: absolute;
   top: 0;
   bottom: 0;
-  left: -5px;
+  left: -10px;
   display: flex;
   justify-content: center;
   align-items: center;
