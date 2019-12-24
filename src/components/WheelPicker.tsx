@@ -10,6 +10,7 @@ import WheelPickerItem from "../components/WheelPickerItem";
 import useObsever from "../hooks/useObserver";
 
 const List = styled.ul`
+  position: relative;
   margin: 0;
   padding: 0;
   display: inline-block;
@@ -128,6 +129,12 @@ const WheelPicker: React.FC<WheelPickerProps> = (
     height
   ]);
 
+  const handleOnClick = (e: React.MouseEvent<HTMLLIElement>) => {
+    if (root.current) {
+      root.current.scrollTo(0, e.currentTarget.offsetTop - spaceHeight);
+    }
+  };
+
   useImperativeHandle(ref, () => ({
     focus: () => {
       root.current && root.current.focus();
@@ -177,6 +184,7 @@ const WheelPicker: React.FC<WheelPickerProps> = (
           {...styles}
           height={_itemHeight}
           activeID={activeID}
+          onClick={handleOnClick}
           ref={refs[item.id]}
         />
       ))}
