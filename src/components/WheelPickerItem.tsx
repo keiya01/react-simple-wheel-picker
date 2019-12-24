@@ -6,7 +6,7 @@ const Item = styled.li`
   display: flex;
   align-items: center;
   justify-content: left;
-  transition: transform ease 100ms;
+  cursor: pointer;
   ${(props: { height: number }): string => `
     min-height: ${props.height}px;
   `}
@@ -64,10 +64,11 @@ export interface WheelPickerItemProps {
   color: string;
   activeColor: string;
   fontSize: number;
+  onClick?: (e: React.MouseEvent<HTMLLIElement>) => void;
 }
 
 const WheelPickerItem: React.FC<WheelPickerItemProps> = (
-  { id, value, activeID, height, color, activeColor, fontSize },
+  { id, value, activeID, height, color, activeColor, fontSize, onClick },
   ref
 ) => {
   const selected = id === activeID;
@@ -80,6 +81,7 @@ const WheelPickerItem: React.FC<WheelPickerItemProps> = (
       data-itemid={id}
       data-itemvalue={value}
       height={height}
+      onClick={onClick}
     >
       {selected && <Icon fontSize={fontSize}>&#10003;</Icon>}
       <span style={{ width: ICON_WIDTH }}></span>
