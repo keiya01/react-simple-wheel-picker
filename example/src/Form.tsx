@@ -45,12 +45,10 @@ const data: PickerData[] = [
 ];
 
 const Form = () => {
-  const [language, setLanguage] = useState("");
+  const [language, setLanguage] = useState<PickerData["value"]>("");
 
-  const handleOnChange = (target: Element) => {
-    if (target.textContent) {
-      setLanguage(target.textContent);
-    }
+  const handleOnChange = (data: PickerData) => {
+    setLanguage(data.value);
   };
 
   return (
@@ -76,25 +74,30 @@ const Form = () => {
           boxShadow: "2px 5px 10px #ccc"
         }}
       >
-        <h3>Select your favorite language</h3>
-        <p>
-          your favorite lauguage is
-          <span style={{ fontWeight: "bold", marginLeft: 10 }}>{language}</span>
-        </p>
+        <label htmlFor="languages" style={{ color: "#777" }}>
+          Select your favorite language
+        </label>
         <div style={{ marginTop: 20 }}>
           <WheelPicker
             data={data}
             selectedID={data[0].id}
             height={200}
             width={150}
+            idName="languages"
+            titleID="select your favorite language"
             itemHeight={50}
             onChange={handleOnChange}
             color="#aaa"
             activeColor="#333"
             backgroundColor="#fff"
             shadowColor="#ddd"
+            focusColor="#333"
           />
         </div>
+        <p>
+          your favorite lauguage is
+          <span style={{ fontWeight: "bold", marginLeft: 10 }}>{language}</span>
+        </p>
       </div>
     </div>
   );
