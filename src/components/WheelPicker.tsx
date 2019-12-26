@@ -177,14 +177,18 @@ const WheelPicker: React.FC<WheelPickerProps> = (
     }
   };
 
-  useImperativeHandle(ref, () => ({
-    focus: () => {
-      root.current && root.current.focus();
-    },
-    blur: () => {
-      root.current && root.current.blur();
-    }
-  }));
+  useImperativeHandle(
+    ref,
+    () => ({
+      focus: () => {
+        root.current && root.current.focus();
+      },
+      blur: () => {
+        root.current && root.current.blur();
+      }
+    }),
+    [root]
+  );
 
   useEffect(() => {
     let maxHeight = itemHeight;
