@@ -238,5 +238,91 @@ describe("WheelPicker", () => {
 
       expect(scrollTop).toEqual(100);
     });
+
+    it("should be moved to next option position when up arrow key was pressed", () => {
+      const { getByTestId } = render(
+        <WheelPicker
+          data={pickerData}
+          selectedID="1"
+          onChange={() => {}} // eslint-disable-line no-empty-function
+          height={100}
+          itemHeight={100}
+        />
+      );
+
+      const listbox = getByTestId("picker-list");
+
+      fireEvent.keyDown(listbox, {
+        keyCode: 40
+      });
+
+      expect(scrollTop).toEqual(100);
+    });
+
+    it("should be moved to next option position when down arrow key was pressed", () => {
+      const { getByTestId } = render(
+        <WheelPicker
+          data={pickerData}
+          selectedID="1"
+          onChange={() => {}} // eslint-disable-line no-empty-function
+          height={100}
+          itemHeight={100}
+        />
+      );
+
+      const listbox = getByTestId("picker-list");
+
+      fireEvent.keyDown(listbox, {
+        keyCode: 38
+      });
+
+      expect(scrollTop).toEqual(-100);
+    });
+
+    it("should be unfocused from WheelPicker when space key was pressed", () => {
+      const { getByTestId } = render(
+        <WheelPicker
+          data={pickerData}
+          selectedID="1"
+          onChange={() => {}} // eslint-disable-line no-empty-function
+          height={100}
+          itemHeight={100}
+        />
+      );
+
+      const listbox = getByTestId("picker-list");
+
+      listbox.focus();
+      expect(document.activeElement).toEqual(listbox);
+
+      fireEvent.keyDown(listbox, {
+        keyCode: 32
+      });
+
+      expect(document.activeElement).not.toEqual(listbox);
+    });
+
+    it("should be unfocused from WheelPicker when esc key was pressed", () => {
+      const { getByTestId } = render(
+        <WheelPicker
+          data={pickerData}
+          selectedID="1"
+          onChange={() => {}} // eslint-disable-line no-empty-function
+          height={100}
+          itemHeight={100}
+        />
+      );
+
+      const listbox = getByTestId("picker-list");
+
+      listbox.focus();
+      expect(document.activeElement).toEqual(listbox);
+
+      fireEvent.keyDown(listbox, {
+        keyCode: 27
+      });
+
+      expect(document.activeElement).not.toEqual(listbox);
+    });
   });
 });
