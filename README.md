@@ -11,6 +11,7 @@
 
 - This package is simple and flexible wheel picker for React
 - This package move like same as native applications picker
+- This package support accessibility
 
 # Usage
 
@@ -95,4 +96,4 @@ If you want to know more about accessibility, you can check here(https://develop
 
 # Accessibility for this package
 - Support aria-* and role options
-- Not supported operating keyboard (**It will support in the future**)
+- Support keyboard operation
