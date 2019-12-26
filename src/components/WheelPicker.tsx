@@ -8,6 +8,7 @@ import React, {
 import styled from "styled-components";
 import WheelPickerItem from "../components/WheelPickerItem";
 import useObsever from "../hooks/useObserver";
+import { setScrollAnimation } from "../hooks/useScrollAnimation";
 
 const List = styled.ul`
   position: relative;
@@ -163,12 +164,18 @@ const WheelPicker: React.FC<WheelPickerProps> = (
 
     if ((!pressedKeys[16] && code === 9) || code === 40) {
       e.preventDefault();
-      target.scrollTo(0, target.scrollTop + _itemHeight);
+      const animate = setScrollAnimation(target, target.scrollTop, _itemHeight);
+      requestAnimationFrame(animate);
     }
 
     if ((pressedKeys[16] && code === 9) || code === 38) {
       e.preventDefault();
-      target.scrollTo(0, target.scrollTop - _itemHeight);
+      const animate = setScrollAnimation(
+        target,
+        target.scrollTop,
+        _itemHeight * -1
+      );
+      requestAnimationFrame(animate);
     }
 
     if (code === 32 || code === 27) {
