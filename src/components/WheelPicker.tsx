@@ -8,6 +8,7 @@ import React, {
 import styled from "styled-components";
 import WheelPickerItem from "../components/WheelPickerItem";
 import useObsever from "../hooks/useObserver";
+import { setScrollAnimation } from "../hooks/useScrollAnimation";
 
 const List = styled.ul`
   position: relative;
@@ -108,6 +109,9 @@ const WheelPicker: React.FC<WheelPickerProps> = (
   ref
 ) => {
   const [_itemHeight, setItemHeight] = useState(itemHeight);
+  const [pressedKeys, setPressedKeys] = useState<{ [key: number]: boolean }>(
+    {}
+  );
   const { root, refs, activeID } = useObsever(
     data,
     selectedID,
@@ -135,14 +139,63 @@ const WheelPicker: React.FC<WheelPickerProps> = (
     }
   };
 
-  useImperativeHandle(ref, () => ({
-    focus: () => {
-      root.current && root.current.focus();
-    },
-    blur: () => {
-      root.current && root.current.blur();
+  const handleKeyUp = (e: React.KeyboardEvent<HTMLUListElement>) => {
+    const code = e.keyCode;
+    if (pressedKeys[code]) {
+      e.persist();
+      setPressedKeys(prev => ({
+        ...prev,
+        [code]: false
+      }));
     }
-  }));
+  };
+
+  const handleOnKeyPress = (e: React.KeyboardEvent<HTMLUListElement>) => {
+    const target = e.currentTarget;
+    const code = e.keyCode;
+
+    if (!pressedKeys[code] && code === 16) {
+      e.persist();
+      setPressedKeys(prev => ({
+        ...prev,
+        [e.keyCode]: true
+      }));
+    }
+
+    if ((!pressedKeys[16] && code === 9) || code === 40) {
+      e.preventDefault();
+      const animate = setScrollAnimation(target, target.scrollTop, _itemHeight);
+      requestAnimationFrame(animate);
+    }
+
+    if ((pressedKeys[16] && code === 9) || code === 38) {
+      e.preventDefault();
+      const animate = setScrollAnimation(
+        target,
+        target.scrollTop,
+        _itemHeight * -1
+      );
+      requestAnimationFrame(animate);
+    }
+
+    if (code === 32 || code === 27) {
+      e.preventDefault();
+      target.blur();
+    }
+  };
+
+  useImperativeHandle(
+    ref,
+    () => ({
+      focus: () => {
+        root.current && root.current.focus();
+      },
+      blur: () => {
+        root.current && root.current.blur();
+      }
+    }),
+    [root]
+  );
 
   useEffect(() => {
     let maxHeight = itemHeight;
@@ -175,6 +228,9 @@ const WheelPicker: React.FC<WheelPickerProps> = (
       backgroundColor={styles.backgroundColor}
       shadowColor={styles.shadowColor}
       focusColor={styles.focusColor}
+      onKeyUp={handleKeyUp}
+      onKeyPress={handleOnKeyPress}
+      onKeyDown={handleOnKeyPress}
     >
       <div style={{ height: spaceHeight }} />
       {data.map(item => (

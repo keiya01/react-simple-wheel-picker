@@ -8,7 +8,7 @@ const easeOutCubic = (t: number, b: number, c: number, d: number) => {
   return c * (t * t * t + 1) + b;
 };
 
-const setScrollAnimation = (
+export const setScrollAnimation = (
   root: HTMLUListElement,
   currentPosition: number,
   changingValue: number
