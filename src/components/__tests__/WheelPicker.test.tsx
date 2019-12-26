@@ -123,9 +123,12 @@ describe("WheelPicker", () => {
     beforeEach(() => {
       jest
         .spyOn(window, "requestAnimationFrame")
-        .mockImplementation((cb: any) => cb());
+        .mockImplementation((cb: FrameRequestCallback) => {
+          cb(0);
+          return 0;
+        });
 
-      const _setScrollAnimation = setScrollAnimation as any;
+      const _setScrollAnimation = setScrollAnimation as jest.Mock;
       _setScrollAnimation.mockImplementation(
         (_: HTMLElement, __: number, itemHeight: number) => {
           return () => {
@@ -183,34 +186,6 @@ describe("WheelPicker", () => {
       expect(scrollTop).toEqual(-100);
     });
 
-    it("should be moved to next option position when tab key was pressed before shift key was pressed", () => {
-      const { getByTestId } = render(
-        <WheelPicker
-          data={pickerData}
-          selectedID="1"
-          onChange={() => {}} // eslint-disable-line no-empty-function
-          height={100}
-          itemHeight={100}
-        />
-      );
-
-      const listbox = getByTestId("picker-list");
-
-      fireEvent.keyDown(listbox, {
-        keyCode: 16
-      });
-
-      fireEvent.keyUp(listbox, {
-        keyCode: 16
-      });
-
-      fireEvent.keyDown(listbox, {
-        keyCode: 9
-      });
-
-      expect(scrollTop).toEqual(100);
-    });
-
     it("should be moved to next option position when shift key was released before tab key was pressed", () => {
       const { getByTestId } = render(
         <WheelPicker
@@ -239,7 +214,7 @@ describe("WheelPicker", () => {
       expect(scrollTop).toEqual(100);
     });
 
-    it("should be moved to next option position when up arrow key was pressed", () => {
+    it("should be moved to previous option position when up arrow key was pressed", () => {
       const { getByTestId } = render(
         <WheelPicker
           data={pickerData}
