@@ -139,9 +139,9 @@ const WheelPicker: React.FC<WheelPickerProps> = (
   };
 
   const handleKeyUp = (e: React.KeyboardEvent<HTMLUListElement>) => {
-    e.persist();
     const code = e.keyCode;
     if (pressedKeys[code]) {
+      e.persist();
       setPressedKeys(prev => ({
         ...prev,
         [code]: false
