@@ -1,5 +1,6 @@
 import React, { forwardRef } from "react";
 import styled, { keyframes } from "styled-components";
+import { OPTION_ID } from "../constants/optionID";
 
 const Item = styled.li`
   position: relative;
@@ -78,6 +79,7 @@ const WheelPickerItem: React.FC<WheelPickerItemProps> = (
       aria-selected={selected}
       aria-labelledby={value.toString()}
       ref={ref}
+      id={`${OPTION_ID}${id}`}
       data-itemid={id}
       data-itemvalue={value}
       height={height}
