@@ -71,7 +71,7 @@ const Sample = () => {
 | :-------------: | :------------------------------------------: | :-----: | :-------------------------------------------------------------------------------------------- |
 |      data       | Array<{id: string, value: string \| number}> |  true   | It should be array of object that have `id` and `value`                                       |
 |   selectedID    |                    string                    |  true   | You can set default data id                                                                   |
-|    onChange     |       function(target: Element): void        |  true   | You can get `value` or `id` from `target.textContent` or `target.getAttribute("data-itemid")` |
+|    onChange     |       function(data: PickerData): void        |  true   | You can get `value` or `id` |
 |     height      |                    number                    |  true   | You can specify height to wheel picker                                                        |
 |   itemHeight    |                    number                    |  true   | You can specify item height to wheel picker item                                              |
 |      width      |                    number                    |  false  | You can specify width to wheel picker                                                         |
