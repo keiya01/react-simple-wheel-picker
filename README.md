@@ -92,7 +92,7 @@ const Sample = () => {
 | titleText | string | false | You can specify titleText that it is linked with aria-label |
 | required | boolean | false | You can specify required that it is linked with aria-required |
 
-If you want to know more about accessibility, you can check here(https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/listbox_role).
+If you want to know more about accessibility, you can check [here](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/listbox_role).
 
 # Accessibility for this package
 - Support aria-* and role options
