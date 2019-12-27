@@ -9,6 +9,7 @@ import styled from "styled-components";
 import WheelPickerItem from "../components/WheelPickerItem";
 import useObsever from "../hooks/useObserver";
 import { setScrollAnimation } from "../hooks/useScrollAnimation";
+import { OPTION_ID } from "../constants/optionID";
 
 const List = styled.ul`
   position: relative;
@@ -133,6 +134,10 @@ const WheelPicker: React.FC<WheelPickerProps> = (
     height
   ]);
 
+  const ariaActivedescendant = useMemo(() => {
+    return `${OPTION_ID}${activeID}`;
+  }, [activeID]);
+
   const handleOnClick = (e: React.MouseEvent<HTMLLIElement>) => {
     if (root.current) {
       root.current.scrollTo(0, e.currentTarget.offsetTop - spaceHeight);
@@ -221,6 +226,7 @@ const WheelPicker: React.FC<WheelPickerProps> = (
       aria-labelledby={titleID}
       aria-label={titleText}
       aria-required={required}
+      aria-activedescendant={ariaActivedescendant}
       ref={root}
       data-testid="picker-list"
       height={height}
