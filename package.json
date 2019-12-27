@@ -1,6 +1,6 @@
 {
 	"name": "react-simple-wheel-picker",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"main": "dist/index.js",
 	"files": [ "dist" ],
 	"license": "MIT",
@@ -10,13 +10,13 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/keiya01/react-wheel-datepicker.git"
+		"url": "git+https://github.com/keiya01/react-simple-wheel-picker.git"
 	},
-	"keywords": [ "react", "select", "wheel-picker", "picker" ],
+	"keywords": [ "react", "select", "wheel", "picker", "accessibility", "drum" ],
 	"bugs": {
-		"url": "https://github.com/keiya01/react-wheel-datepicker/issues"
+		"url": "https://github.com/keiya01/react-simple-wheel-picker/issues"
 	},
-	"homepage": "https://github.com/keiya01/react-wheel-datepicker#readme",
+	"homepage": "https://github.com/keiya01/react-simple-wheel-picker#readme",
 	"scripts": {
 		"build": "tsc",
 		"prepublishOnly": "yarn build",
