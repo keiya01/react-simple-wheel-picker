@@ -156,19 +156,22 @@ const WheelPicker: React.FC<WheelPickerProps> = (
   );
 
   useEffect(() => {
-    let maxHeight = itemHeight;
-    Object.keys(refs).map(id => {
-      const elm = refs[id].current;
-      if (!elm) {
-        return;
-      }
+    const adjustItemHeight = () => {
+      let maxHeight = itemHeight;
+      Object.keys(refs).map(id => {
+        const elm = refs[id].current;
+        if (!elm) {
+          return;
+        }
 
-      const h = elm.clientHeight;
-      if (h > maxHeight) {
-        maxHeight = h;
-      }
-    });
-    setItemHeight(maxHeight);
+        const h = elm.clientHeight;
+        if (h > maxHeight) {
+          maxHeight = h;
+        }
+      });
+      return maxHeight;
+    };
+    setItemHeight(adjustItemHeight());
   }, [itemHeight, refs]);
 
   return (
