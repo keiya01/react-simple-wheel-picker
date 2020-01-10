@@ -77,7 +77,7 @@ const WheelPickerItem: React.FC<WheelPickerItemProps> = (
     <Item
       role="option"
       aria-selected={selected}
-      aria-labelledby={value.toString()}
+      aria-label={value.toString()}
       ref={ref}
       id={`${OPTION_ID}${id}`}
       data-itemid={id}
