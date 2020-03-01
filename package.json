@@ -88,7 +88,6 @@
 		"webpack": "^4.41.2"
 	},
 	"dependencies": {
-		"intersection-observer": "^0.7.0",
 		"lodash-es": "^4.17.15",
 		"react": "^16.12.0",
 		"react-dom": "^16.12.0",
