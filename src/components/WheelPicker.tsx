@@ -3,7 +3,8 @@ import React, {
   useImperativeHandle,
   forwardRef,
   useState,
-  useEffect
+  useEffect,
+  useCallback
 } from "react";
 import styled from "styled-components";
 import WheelPickerItem from "../components/WheelPickerItem";
@@ -117,15 +118,27 @@ const WheelPicker: React.FC<WheelPickerProps> = (
     _itemHeight,
     onChange
   );
-  const styles = setStyles({
-    width,
-    color,
-    activeColor,
-    fontSize,
-    backgroundColor,
-    shadowColor,
-    focusColor
-  });
+  const styles = useMemo(
+    () =>
+      setStyles({
+        width,
+        color,
+        activeColor,
+        fontSize,
+        backgroundColor,
+        shadowColor,
+        focusColor
+      }),
+    [
+      activeColor,
+      backgroundColor,
+      color,
+      focusColor,
+      fontSize,
+      shadowColor,
+      width
+    ]
+  );
 
   const spaceHeight = useMemo(() => calculateSpaceHeight(height, _itemHeight), [
     _itemHeight,
@@ -136,11 +149,14 @@ const WheelPicker: React.FC<WheelPickerProps> = (
     return `${OPTION_ID}${activeID}`;
   }, [activeID]);
 
-  const handleOnClick = (e: React.MouseEvent<HTMLLIElement>) => {
-    if (root.current) {
-      root.current.scrollTo(0, e.currentTarget.offsetTop - spaceHeight);
-    }
-  };
+  const handleOnClick = useCallback(
+    (e: React.MouseEvent<HTMLLIElement>) => {
+      if (root.current) {
+        root.current.scrollTo(0, e.currentTarget.offsetTop - spaceHeight);
+      }
+    },
+    [root, spaceHeight]
+  );
 
   useImperativeHandle(
     ref,

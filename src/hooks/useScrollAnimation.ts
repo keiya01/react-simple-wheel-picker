@@ -1,4 +1,4 @@
-import { RefObject, useRef } from "react";
+import { RefObject, useRef, useCallback } from "react";
 import { PickerItemRef } from "../types/pickerItemRef";
 import { PickerData } from "../components/WheelPicker";
 
@@ -39,28 +39,31 @@ const useScrollAnimation = (
 ) => {
   const timer = useRef<number | null>(null);
 
-  const onScroll = (data: PickerData[], itemID: string) => {
-    if (timer.current) {
-      clearTimeout(timer.current);
-    }
+  const onScroll = useCallback(
+    (data: PickerData[], itemID: string) => {
+      if (timer.current) {
+        clearTimeout(timer.current);
+      }
 
-    const firstID = data[0].id;
-    const basicElm = refs[firstID].current;
-    const currentElm = refs[itemID || firstID].current;
-    const _root = root.current;
-    if (_root && basicElm && currentElm) {
-      timer.current = setTimeout(() => {
-        const basicOffsetTop = basicElm.offsetTop;
-        const targetOffsetTop = currentElm.offsetTop - basicOffsetTop;
-        const animation = setScrollAnimation(
-          _root,
-          _root.scrollTop,
-          targetOffsetTop - _root.scrollTop
-        );
-        requestAnimationFrame(animation);
-      }, 500);
-    }
-  };
+      const firstID = data[0].id;
+      const basicElm = refs[firstID].current;
+      const currentElm = refs[itemID || firstID].current;
+      const _root = root.current;
+      if (_root && basicElm && currentElm) {
+        timer.current = setTimeout(() => {
+          const basicOffsetTop = basicElm.offsetTop;
+          const targetOffsetTop = currentElm.offsetTop - basicOffsetTop;
+          const animation = setScrollAnimation(
+            _root,
+            _root.scrollTop,
+            targetOffsetTop - _root.scrollTop
+          );
+          requestAnimationFrame(animation);
+        }, 500);
+      }
+    },
+    [refs, root]
+  );
 
   return onScroll;
 };
