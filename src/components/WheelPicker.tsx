@@ -19,6 +19,7 @@ const List = styled.ul`
   display: inline-block;
   list-style: none;
   overflow-y: scroll;
+  will-change: transform;
   overflow-x: hidden;
   text-align: center;
   padding: 0 20px;
