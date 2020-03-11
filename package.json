@@ -2,7 +2,9 @@
 	"name": "react-simple-wheel-picker",
 	"version": "1.0.4",
 	"main": "dist/index.js",
-	"files": [ "dist" ],
+	"files": [
+		"dist"
+	],
 	"license": "MIT",
 	"author": {
 		"name": "Keiya Sasaki",
@@ -12,7 +14,14 @@
 		"type": "git",
 		"url": "git+https://github.com/keiya01/react-simple-wheel-picker.git"
 	},
-	"keywords": [ "react", "select", "wheel", "picker", "accessibility", "drum" ],
+	"keywords": [
+		"react",
+		"select",
+		"wheel",
+		"picker",
+		"accessibility",
+		"drum"
+	],
 	"bugs": {
 		"url": "https://github.com/keiya01/react-simple-wheel-picker/issues"
 	},
@@ -30,7 +39,11 @@
 		}
 	},
 	"lint-staged": {
-		"src/**/*.{ts, tsx}": [ "jest --bail --findRelatedTests", "eslint --fix", "git add" ]
+		"src/**/*.{ts, tsx}": [
+			"jest --bail --findRelatedTests",
+			"eslint --fix",
+			"git add"
+		]
 	},
 	"resolutions": {
 		"@types/react": "^16.9.13"
@@ -71,12 +84,16 @@
 		"react-test-renderer": "^16.12.0",
 		"ts-loader": "^6.2.1",
 		"typescript": "^3.7.2",
-		"webpack": "^4.41.2"
-	},
-	"dependencies": {
-		"intersection-observer": "^0.7.0",
+		"webpack": "^4.41.2",
 		"react": "^16.12.0",
 		"react-dom": "^16.12.0",
+		"styled-components": "^4.4.1"
+	},
+	"peerDependencies": {
+		"react": "16.x",
+		"react-dom": "16.x"
+	},
+	"dependencies": {
 		"styled-components": "^4.4.1"
 	}
 }

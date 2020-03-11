@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, useMemo } from "react";
 import styled, { keyframes } from "styled-components";
 import { OPTION_ID } from "../constants/optionID";
 
@@ -46,15 +46,6 @@ const Text = styled.p`
   text-align: left;
   word-wrap: break-word;
   padding-left: 10px;
-  ${(props: {
-    isActive: boolean;
-    color: string;
-    fontSize: number;
-    activeColor: string;
-  }): string => `
-    color: ${props.isActive ? props.activeColor : props.color};
-    font-size: ${props.fontSize}px;
-  `}
 `;
 
 export interface WheelPickerItemProps {
@@ -72,7 +63,19 @@ const WheelPickerItem: React.FC<WheelPickerItemProps> = (
   { id, value, activeID, height, color, activeColor, fontSize, onClick },
   ref
 ) => {
-  const selected = id === activeID;
+  const selected = useMemo(() => id === activeID, [id, activeID]);
+  const textColor = useMemo(() => (selected ? activeColor : color), [
+    activeColor,
+    color,
+    selected
+  ]);
+  const textStyle = useMemo(
+    () => ({
+      color: textColor,
+      fontSize
+    }),
+    [fontSize, textColor]
+  );
   return (
     <Item
       role="option"
@@ -87,14 +90,7 @@ const WheelPickerItem: React.FC<WheelPickerItemProps> = (
     >
       {selected && <Icon fontSize={fontSize}>&#10003;</Icon>}
       <span style={{ width: ICON_WIDTH }}></span>
-      <Text
-        isActive={selected}
-        color={color}
-        activeColor={activeColor}
-        fontSize={fontSize}
-      >
-        {value}
-      </Text>
+      <Text style={textStyle}>{value}</Text>
     </Item>
   );
 };
