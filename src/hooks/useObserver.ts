@@ -1,4 +1,3 @@
-import "intersection-observer";
 import { useEffect, useMemo, useRef, createRef, useState } from "react";
 import { PickerData } from "../components/WheelPicker";
 import { PickerItemRef } from "../types/pickerItemRef";
