@@ -1,4 +1,9 @@
-import React, { forwardRef, useMemo } from "react";
+import React, {
+  forwardRef,
+  useMemo,
+  FocusEventHandler,
+  MouseEventHandler
+} from "react";
 import styled, { keyframes } from "styled-components";
 import { OPTION_ID } from "../constants/optionID";
 
@@ -11,6 +16,9 @@ const Item = styled.li`
   ${(props: { height: number }): string => `
     min-height: ${props.height}px;
   `}
+  &:focus {
+    outline: none;
+  }
 `;
 
 const fadeIn = keyframes`
@@ -56,11 +64,22 @@ export interface WheelPickerItemProps {
   color: string;
   activeColor: string;
   fontSize: number;
-  onClick?: (e: React.MouseEvent<HTMLLIElement>) => void;
+  onClick?: MouseEventHandler;
+  onFocus?: FocusEventHandler;
 }
 
 const WheelPickerItem: React.FC<WheelPickerItemProps> = (
-  { id, value, activeID, height, color, activeColor, fontSize, onClick },
+  {
+    id,
+    value,
+    activeID,
+    height,
+    color,
+    activeColor,
+    fontSize,
+    onClick,
+    onFocus
+  },
   ref
 ) => {
   const selected = useMemo(() => id === activeID, [id, activeID]);
@@ -87,6 +106,8 @@ const WheelPickerItem: React.FC<WheelPickerItemProps> = (
       data-itemvalue={value}
       height={height}
       onClick={onClick}
+      onFocus={onFocus}
+      tabIndex={0}
     >
       {selected && <Icon fontSize={fontSize}>&#10003;</Icon>}
       <span style={{ width: ICON_WIDTH }}></span>

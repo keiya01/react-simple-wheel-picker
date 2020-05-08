@@ -8,7 +8,7 @@ import React, {
 } from "react";
 import styled from "styled-components";
 import WheelPickerItem from "../components/WheelPickerItem";
-import useObsever from "../hooks/useObserver";
+import useObserver from "../hooks/useObserver";
 import { OPTION_ID } from "../constants/optionID";
 import useHandleKeyboard from "../hooks/useHandleKeyboard";
 
@@ -113,7 +113,7 @@ const WheelPicker: React.FC<WheelPickerProps> = (
 ) => {
   const [_itemHeight, setItemHeight] = useState(itemHeight);
   const { onKeyUp, onKeyPress } = useHandleKeyboard(_itemHeight);
-  const { root, refs, activeID } = useObsever(
+  const { root, refs, activeID, onFocus } = useObserver(
     data,
     selectedID,
     _itemHeight,
@@ -220,6 +220,7 @@ const WheelPicker: React.FC<WheelPickerProps> = (
           height={_itemHeight}
           activeID={activeID}
           onClick={handleOnClick}
+          onFocus={onFocus}
           ref={refs[item.id]}
         />
       ))}
