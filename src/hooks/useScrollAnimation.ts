@@ -40,7 +40,7 @@ const useScrollAnimation = (
   const timer = useRef<number | null>(null);
 
   const onScroll = useCallback(
-    (data: PickerData[], itemID: string) => {
+    (data: PickerData[], itemID: string, hasAnimation?: boolean) => {
       if (timer.current) {
         clearTimeout(timer.current);
       }
@@ -50,16 +50,19 @@ const useScrollAnimation = (
       const currentElm = refs[itemID || firstID].current;
       const _root = root.current;
       if (_root && basicElm && currentElm) {
-        timer.current = setTimeout(() => {
-          const basicOffsetTop = basicElm.offsetTop;
-          const targetOffsetTop = currentElm.offsetTop - basicOffsetTop;
-          const animation = setScrollAnimation(
-            _root,
-            _root.scrollTop,
-            targetOffsetTop - _root.scrollTop
-          );
-          requestAnimationFrame(animation);
-        }, 500);
+        timer.current = setTimeout(
+          () => {
+            const basicOffsetTop = basicElm.offsetTop;
+            const targetOffsetTop = currentElm.offsetTop - basicOffsetTop;
+            const animation = setScrollAnimation(
+              _root,
+              _root.scrollTop,
+              targetOffsetTop - _root.scrollTop
+            );
+            requestAnimationFrame(animation);
+          },
+          hasAnimation ? 300 : 0
+        );
       }
     },
     [refs, root]

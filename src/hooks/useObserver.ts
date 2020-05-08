@@ -1,4 +1,12 @@
-import { useEffect, useMemo, useRef, createRef, useState } from "react";
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  createRef,
+  useState,
+  useCallback,
+  FocusEvent
+} from "react";
 import { PickerData } from "../components/WheelPicker";
 import { PickerItemRef } from "../types/pickerItemRef";
 import useScrollAnimation from "../hooks/useScrollAnimation";
@@ -26,7 +34,7 @@ const calculateRootMargin = (rootHeight: number, itemHeight: number) => {
   return `-${calculateMarginVertical(rootHeight, itemHeight)}% 0px`;
 };
 
-const useObsever = (
+const useObserver = (
   data: PickerData[],
   selectedID: string,
   itemHeight: number,
@@ -37,6 +45,21 @@ const useObsever = (
   const observer = useRef<IntersectionObserver | null>(null);
   const [activeID, setActiveID] = useState(selectedID);
   const onScroll = useScrollAnimation(root, refs);
+
+  const handleOnFocus = useCallback(
+    (e: FocusEvent<HTMLLIElement>) => {
+      const target = e.target;
+      const id = target.getAttribute("data-itemid");
+      const value = target.getAttribute("data-itemvalue");
+      if (!id || !value) {
+        throw new Error("Can not found id or value");
+      }
+      onScroll(data, id);
+      setActiveID(id);
+      onChange({ id, value });
+    },
+    [data, onChange, onScroll]
+  );
 
   useEffect(() => {
     const observerCallback: IntersectionObserverCallback = (
@@ -53,7 +76,7 @@ const useObsever = (
           throw new Error("Can not found id or value");
         }
 
-        onScroll(data, itemID);
+        onScroll(data, itemID, true);
         setActiveID(itemID);
         onChange({ id: itemID, value: itemValue });
       });
@@ -90,8 +113,9 @@ const useObsever = (
   return {
     root,
     refs,
-    activeID
+    activeID,
+    onFocus: handleOnFocus
   };
 };
 
-export default useObsever;
+export default useObserver;
