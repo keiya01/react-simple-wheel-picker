@@ -15,7 +15,7 @@
 
 # Usage
 
-- `npm run react-simple-wheel-picker` or `yarn add react-simple-wheel-picker`
+- `npm i react-simple-wheel-picker` or `yarn add react-simple-wheel-picker`
 - Look at simple example below or please check [example](https://github.com/keiya01/react-simple-wheel-picker/tree/master/example) if you want to know more detail usage
 
 ```js
