@@ -28,7 +28,7 @@ const data: PickerData[] = [
   },
   {
     id: "7",
-    value: "Elm"
+    value: "TypeScript"
   },
   {
     id: "8",
@@ -74,7 +74,7 @@ const Form = () => {
           boxShadow: "2px 5px 10px #ccc"
         }}
       >
-        <label htmlFor="languages" style={{ color: "#777" }}>
+        <label htmlFor="languages" style={{ color: "#555", fontSize: 18 }}>
           Select your favorite language
         </label>
         <div style={{ marginTop: 20 }}>
@@ -91,7 +91,7 @@ const Form = () => {
             activeColor="#333"
             backgroundColor="#fff"
             shadowColor="#ddd"
-            focusColor="#333"
+            focusColor="blue"
           />
         </div>
         <p>
